@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>code环境配置</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>code环境配置 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-02-09 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">字体</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">sublime-text</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">License</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-4">
+                  <a href="#tocAnchor-1-2-2"><span class="tocnumber">2.2</span> <span class="toctext">界面</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-2-3"><span class="tocnumber">2.3</span> <span class="toctext">package control</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-2-4"><span class="tocnumber">2.4</span> <span class="toctext">常用包</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-7">
+                  <a href="#tocAnchor-1-2-5"><span class="tocnumber">2.5</span> <span class="toctext">设置</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-8">
+                  <a href="#tocAnchor-1-2-6"><span class="tocnumber">2.6</span> <span class="toctext">支持C++14</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-9">
+              <a href="#tocAnchor-1-9"><span class="tocnumber">3</span> <span class="toctext">vim</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-10">
+                  <a href="#tocAnchor-1-9-1"><span class="tocnumber">3.1</span> <span class="toctext">几个自定义文件的配置</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-11">
+                  <a href="#tocAnchor-1-9-2"><span class="tocnumber">3.2</span> <span class="toctext">vim 命令</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-12">
+              <a href="#tocAnchor-1-12"><span class="tocnumber">4</span> <span class="toctext">zsh + iterm2</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>几个简单的配置，几乎算不上配置。。。</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">字体</h1>
+
+<ul>
+  <li>Courier New</li>
+  <li>CamingoCode</li>
+  <li>Source Code Pro</li>
+</ul>
+
+<h1 id="tocAnchor-1-2">sublime-text</h1>
+
+<h2 id="tocAnchor-1-2-1">License</h2>
+
+<p>适用于 3103 等高于 309x 的版本</p>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>—– BEGIN LICENSE —–
+TwitterInc
+200 User License
+EA7E-890007
+1D77F72E 390CDD93 4DCBA022 FAF60790
+61AA12C0 A37081C5 D0316412 4584D136
+94D7F7D4 95BC8C1C 527DA828 560BB037
+D1EDDD8C AE7B379F 50C9D69D B35179EF
+2FE898C4 8E4277A8 555CE714 E1FB0E43
+D5D52613 C3D12E98 BC49967F 7652EED2
+9D2D2E61 67610860 6D338B72 5CF95C69
+E36B85CC 84991F19 7575D828 470A92AB
+—— END LICENSE ——
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-2-2">界面</h2>
+
+<p>背景颜色:</p>
+
+<p>182C3A 212D3E 1C2D3E 203248</p>
+
+<ul>
+  <li>可以再<a href="http://color.yafla.com/">这里</a>调色</li>
+  <li>可以在<a href="http://tmtheme-editor.herokuapp.com/">这里</a> 自定义主题</li>
+</ul>
+
+<h2 id="tocAnchor-1-2-3">package control</h2>
+
+<p>
+  <a href="https://packagecontrol.io/installation">https://packagecontrol.io/installation</a>
+</p>
+
+<p>python3 - package control</p>
+
+<div class="language-python highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="kn">import</span> <span class="nn">urllib.request</span><span class="p">,</span><span class="n">os</span><span class="p">,</span><span class="n">hashlib</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="s">'df21e130d211cfc94d9b0905775a7c0f'</span> <span class="o">+</span> <span class="s">'1e3d39e33b79698005270310898eea76'</span><span class="p">;</span> <span class="n">pf</span> <span class="o">=</span> <span class="s">'Package Control.sublime-package'</span><span class="p">;</span> <span class="n">ipp</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">())</span> <span class="p">);</span> <span class="n">by</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span> <span class="s">'http://packagecontrol.io/'</span> <span class="o">+</span> <span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' '</span><span class="p">,</span> <span class="s">'</span><span class="si">%20</span><span class="s">'</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="n">dh</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">by</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">();</span> <span class="k">print</span><span class="p">(</span><span class="s">'Error validating download (got </span><span class="si">%</span><span class="s">s instead of </span><span class="si">%</span><span class="s">s), please try manual install'</span> <span class="o">%</span> <span class="p">(</span><span class="n">dh</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span> <span class="k">if</span> <span class="n">dh</span> <span class="o">!=</span> <span class="n">h</span> <span class="k">else</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">ipp</span><span class="p">,</span> <span class="n">pf</span><span class="p">),</span> <span class="s">'wb'</span> <span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">by</span><span class="p">)</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-2-4">常用包</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OmniMarkupPreviewer</td>
+      <td>SublimeAStyleFormatter</td>
+      <td>themr</td>
+      <td>Theme - Spacegray</td>
+    </tr>
+    <tr>
+      <td>ConvertToUTF8</td>
+      <td>GBK Support</td>
+      <td>terminal</td>
+      <td>ColorCode</td>
+    </tr>
+    <tr>
+      <td>BracketHighlighter</td>
+      <td>Git</td>
+      <td>Git Gutter</td>
+      <td>binaryplist</td>
+    </tr>
+    <tr>
+      <td>Solarized Color</td>
+      <td>zipbrowser</td>
+      <td>codecs33</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tocAnchor-1-2-5">设置</h2>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>"translate_tabs_to_spaces": true,
+"highlight_line": true,
+"show_encoding": true,
+"open_files_in_new_window": false,
+"close_windows_when_empty": true,
+"ensure_newline_at_eof_on_save": true,
+"drag_text": false
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-2-6">支持C++14</h2>
+
+<p>新建build文件</p>
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>{
+    "shell_cmd": "clang++ \"${file}\" -std=c++11 -o \"${file_path}/${file_base_name}\"",
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "working_dir": "${file_path}",
+    "selector": "source.c, source.c++",
+
+    "variants":
+    [
+        {
+            "name": "Run",
+            "shell_cmd": "clang++ \"${file}\" -std=c++11 -o \"${file_path}/${file_base_name}\" &amp;&amp; \"${file_path}/${file_base_name}\""
+        }
+    ]
+}
+</code>
+    </pre>
+  </div>
+</div>
+<p>一般自动放在 ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/下面</p>
+
+<h1 id="tocAnchor-1-9">vim</h1>
+
+<p>使用spf13主题：</p>
+
+<ul>
+  <li>安装： sh &lt;(curl https://j.mp/spf13-vim3 -L)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>更新： curl https://j.mp/spf13-vim3 -L -o</td>
+          <td>sh</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="tocAnchor-1-9-1">几个自定义文件的配置</h2>
+
+<ul>
+  <li>
+    <p>.vimrc.local 对vimrc的覆盖配置</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  set encoding=utf-8
+  set nolist
+  set nospell
+  set guifont=Monaco:h11
+  set writebackup
+  set wrap
+  winpos 0 22
+  set lines=52 columns=95
+  set laststatus=1        "关闭那个airline
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>.gvimrc.local 对gui部分的配置，比如字体 种类大小。。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  set guifont=Menlo:h12
+  :hi Normal guibg=#25303B   "覆盖设置背景颜色 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>.vimrc.bundles.local 添加或删除插件(默认的几个都可以用)
+  ​    <br />
+      Bundle ‘spf13/vim-colors’
+      UnBundle ‘scrooloose/syntastic’</p>
+
+    <p>添加完运行: BundleInstall! 以及:BundleClean +q
+  如果是删除运行 :BundleClean!</p>
+  </li>
+</ul>
+
+<h2 id="tocAnchor-1-9-2">vim 命令</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>命令</th>
+      <th>作用</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>:scriptname</td>
+      <td>列出加载的插件</td>
+    </tr>
+    <tr>
+      <td>:NERDTree</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-12">zsh + iterm2</h1>
+
+<ul>
+  <li>brew install zsh</li>
+  <li>cat /etc/shells   # 查看shell</li>
+  <li>chsh -s /bin/zsh  # 修改</li>
+  <li>
+    <p>.zshrc的plugin可添加：git extract colored-man-pages encode64</p>
+  </li>
+  <li>安装 oh-my-zsh
+    <ul>
+      <li>sh -c “$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)”;
+        <ul>
+          <li>cd 到 ~/.oh-my-zsh/plugins 下面</li>
+          <li>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git</li>
+          <li>在上面的plugin 中添加 zsh-syntax-highlighting 须在最后</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>安装 powerline
+    <ul>
+      <li>pip3 install powerline-status</li>
+      <li>git clone https://github.com/powerline/fonts.git 然后进入 install</li>
+      <li>在 preference profiles text 修改font和non-ascii font为Anonymice Powerline</li>
+    </ul>
+  </li>
+  <li>
+    <p>修改主题中的箭头等图标</p>
+  </li>
+  <li>preference profiles text 不要选择 draw bold text in bright colors</li>
+  <li>preference profiles general working directory 中选择 reuse previous seeion。。。</li>
+  <li>cd-to调用 注意默认的是系统的terminal 需要替换</li>
+  <li>sublime terminal 调用，配置中 “terminal”: “iTerm2-v3.sh”,</li>
+</ul>
+
+
+    </div>
+
+    <hr>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#编辑器-ref">编辑器 <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/stat%E7%AE%80%E4%BB%8B" title="stat简介">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/git_tips" title="git_tips">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

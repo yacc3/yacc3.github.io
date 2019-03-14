@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>AppleScript简介</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>AppleScript简介 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-03-13 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">数据</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-2">
+                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">基本类型</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">转换</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-4">
+                  <a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">运算符</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-1-4"><span class="tocnumber">1.4</span> <span class="toctext">注释</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-1-5"><span class="tocnumber">1.5</span> <span class="toctext">变量</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-7">
+              <a href="#tocAnchor-1-7"><span class="tocnumber">2</span> <span class="toctext">AppleScipt字典</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-8">
+                  <a href="#tocAnchor-1-7-1"><span class="tocnumber">2.1</span> <span class="toctext">command</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-9">
+              <a href="#tocAnchor-1-9"><span class="tocnumber">3</span> <span class="toctext">举例</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-10">
+                  <a href="#tocAnchor-1-9-1"><span class="tocnumber">3.1</span> <span class="toctext">发送邮件</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-11">
+                  <a href="#tocAnchor-1-9-2"><span class="tocnumber">3.2</span> <span class="toctext">批量旋转照片</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>tell application "Finder"
+    display dialog "Hello World"
+end tell
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>待学习 。。。</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">数据</h1>
+
+<h2 id="tocAnchor-1-1-1">基本类型</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>类型</th>
+      <th>属性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Boolean</td>
+      <td>True 或 False</td>
+    </tr>
+    <tr>
+      <td>Number</td>
+      <td>Integer 或 Real</td>
+    </tr>
+    <tr>
+      <td>Text或String</td>
+      <td>文本 字符串</td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td>日期</td>
+    </tr>
+    <tr>
+      <td>Constant</td>
+      <td>常量</td>
+    </tr>
+    <tr>
+      <td>List</td>
+      <td>列表</td>
+    </tr>
+    <tr>
+      <td>Record</td>
+      <td>字典</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tocAnchor-1-1-2">转换</h2>
+
+<p>使用as 进行类型转换</p>
+
+<h2 id="tocAnchor-1-1-3">运算符</h2>
+
+<ol>
+  <li>+、 -、 * 、 ^、 div、 mod</li>
+  <li>=、 &gt;、 &lt;、（这三个都有几个类似的文字比较符）、start、 begin、 contain、 in</li>
+  <li>and、 or、 not</li>
+  <li>&amp; 合并运算符</li>
+  <li>every 提取运算</li>
+</ol>
+
+<h2 id="tocAnchor-1-1-4">注释</h2>
+
+<ul>
+  <li>使用 – 来注释一行</li>
+  <li>使用*之间注释块</li>
+</ul>
+
+<h2 id="tocAnchor-1-1-5">变量</h2>
+
+<p>set var_name to var_value as type</p>
+
+<ul>
+  <li>
+    <p>set myResult to the result of (make new folder at desktop)  –之前需要tell “Finder”</p>
+  </li>
+  <li>Record和List类型数据引用传递，要实现深复制改set为copy</li>
+  <li>其他类型仅是值传递一下，后面是独立的相互不影响。</li>
+</ul>
+
+<p>属性和变量的区别，属性在脚本退出运行后，仍然记录下它最后的值，并且下一次运行时可以被调出。因此，属性的一个用途就是记录一个脚本运行了多少次</p>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>property countTimes : 0
+set countTimes to countTimes + 1
+display dialog "这是第" &amp; countTimes &amp; "次运行本脚本"
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>事件处理 以“on handlerName”开始，以“end handlerName”结束<br />
+子脚本   以“script name”开始，以“end script”结束</p>
+
+<h1 id="tocAnchor-1-7">AppleScipt字典</h1>
+
+<p>AppleScript的帮助文件</p>
+
+<ul>
+  <li>套装 Suite</li>
+  <li>命令 Command</li>
+  <li>对象 Class</li>
+  <li>属性 Property</li>
+</ul>
+
+<h2 id="tocAnchor-1-7-1">command</h2>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>make v : Create a new object.
+    make
+        new type : The class of the new object.
+        [at location specifier] : The location at which to insert the object.
+        [with data any] : The initial contents of the object.
+        [with properties record] : The initial values for properties of the object.
+        → specifier : The new object.
+</code>
+    </pre>
+  </div>
+</div>
+<p>第一行是解释：v动词命令，宗祠内容
+下面是命令格式，第一要写出make，new 也是必选条目，下面括号表示可选的</p>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>tell application "FInder"
+    make new folder at desktop with properties {name: 12 as string}
+end tell
+</code>
+    </pre>
+  </div>
+</div>
+
+<h1 id="tocAnchor-1-9">举例</h1>
+
+<h2 id="tocAnchor-1-9-1">发送邮件</h2>
+
+<pre>
+  <code class="language-zash">--Variables
+set recipientName to "mac"
+set recipientAddress to "1522159413@qq.com"
+set theSubject to "AppleScript Automated Email"
+set theContent to "This email was created and sent using AppleScript!"
+
+
+tell application "Mail"
+    set theMessage to make new outgoing message with properties {subject:theSubject, content:theContent, visible:true}
+    tell theMessage --"outgoing message" 响应 save close send命令 包含 to recipient 属性
+        make new to recipient with properties {name:recipientName, address:recipientAddress}
+        send
+    end tell
+end tell
+</code>
+</pre>
+
+<p>make new outgoing message with properties … 创建了一个outgoing message类型的对象，并赋值给theMessage。</p>
+
+<p>outgoing message 对象包含有一个to recipient对象 可在字典中查看</p>
+
+<p>make new to recipient with properties 。。。创建了一个 to recipient 类型对象
+send 是outgoing message类型的对象可以接受的命令，还有close</p>
+
+<h2 id="tocAnchor-1-9-2">批量旋转照片</h2>
+
+<div class="language-zsh highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>–- Rotates JPEG and TIFF images that are placed <span class="k">in </span>the folder
+on adding folder items to theFolder after receiving fileList
+    display dialog “Rotating Files…” buttons <span class="o">{</span>“OK”<span class="o">}</span> default button 1 giving up after 2
+
+    repeat with theFile <span class="k">in </span>fileList
+        <span class="nb">set </span>infoRec to info <span class="k">for </span>theFile
+        
+        <span class="k">if</span> <span class="o">(</span>name extension of infoRec<span class="o">)</span> is <span class="k">in</span> <span class="o">{</span>“JPG”, “JPEG”, “TIF”, “TIFF”<span class="o">}</span> <span class="k">then
+            </span>tell application “Image Events”
+                launch
+                <span class="nb">set </span>thePic to open file <span class="o">(</span>POSIX path of theFile<span class="o">)</span>
+                rotate thePic to angle 90
+                close thePic saving <span class="nb">yes
+            </span>end tell
+        <span class="k">else
+            </span>display dialog “false”
+        end <span class="k">if
+    </span>end repeat
+end adding folder items to
+</code>
+    </pre>
+  </div>
+</div>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#CSE-ref">
+    		CSE <span>15</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#AppleScript-ref">AppleScript <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%92%8C%E7%BD%91%E5%85%B3" title="路由器和网关">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE" title="树莓派">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

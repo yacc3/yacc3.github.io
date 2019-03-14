@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>Tmux</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>Tmux </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-04-01 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">command</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">参考</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>一点记录</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">command</h1>
+
+<p>默认前缀 ctrl - b</p>
+
+<p>基本操作</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>?</td>
+      <td>列出所有快捷键；按q返回</td>
+    </tr>
+    <tr>
+      <td>d</td>
+      <td>脱离当前会话,可暂时返回Shell界面，输入tmux attach能够重新进入之前会话</td>
+    </tr>
+    <tr>
+      <td>s</td>
+      <td>选择并切换会话；在同时开启了多个会话时使用</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>选择要脱离的会话；在同时开启了多个会话时使用</td>
+    </tr>
+    <tr>
+      <td>:</td>
+      <td>进入命令行模式；此时可输入支持的命令，例如kill-server所有tmux会话</td>
+    </tr>
+    <tr>
+      <td>[</td>
+      <td>复制模式，光标移动到复制内容位置，空格键开始，方向键选择复制，回车确认，q/Esc退出</td>
+    </tr>
+    <tr>
+      <td>]</td>
+      <td>进入粘贴模式，粘贴之前复制的内容，按q/Esc退出</td>
+    </tr>
+    <tr>
+      <td>~</td>
+      <td>列出提示信息缓存；其中包含了之前tmux返回的各种提示信息</td>
+    </tr>
+    <tr>
+      <td>t</td>
+      <td>显示当前的时间</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>窗口操作:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>c</td>
+      <td>创建新窗口</td>
+    </tr>
+    <tr>
+      <td>&amp;</td>
+      <td>关闭当前窗口</td>
+    </tr>
+    <tr>
+      <td>[1-9]</td>
+      <td>切换到指定窗口</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>切换至上一窗口</td>
+    </tr>
+    <tr>
+      <td>n</td>
+      <td>切换至下一窗口</td>
+    </tr>
+    <tr>
+      <td>l</td>
+      <td>前后窗口间互相切换</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>通过窗口列表切换窗口</td>
+    </tr>
+    <tr>
+      <td>,</td>
+      <td>重命名当前窗口，便于识别</td>
+    </tr>
+    <tr>
+      <td>.</td>
+      <td>修改当前窗口编号，相当于重新排序</td>
+    </tr>
+    <tr>
+      <td>f</td>
+      <td>在所有窗口中查找关键词，便于窗口多了切换</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>面板操作:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>“</td>
+      <td>将当前面板上下分屏</td>
+    </tr>
+    <tr>
+      <td>%</td>
+      <td>将当前面板左右分屏</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>关闭当前分屏</td>
+    </tr>
+    <tr>
+      <td>!</td>
+      <td>将当前面板置于新窗口,即新建一个窗口,其中仅包含当前面板</td>
+    </tr>
+    <tr>
+      <td>Ctrl+方向键</td>
+      <td>以1个单元格为单位移动边缘以调整当前面板大小</td>
+    </tr>
+    <tr>
+      <td>Alt+方向键</td>
+      <td>以5个单元格为单位移动边缘以调整当前面板大小</td>
+    </tr>
+    <tr>
+      <td>空格键</td>
+      <td>可以在默认面板布局中切换，试试就知道了</td>
+    </tr>
+    <tr>
+      <td>q</td>
+      <td>显示面板编号</td>
+    </tr>
+    <tr>
+      <td>o</td>
+      <td>选择当前窗口中下一个面板</td>
+    </tr>
+    <tr>
+      <td>方向键</td>
+      <td>移动光标选择对应面板</td>
+    </tr>
+    <tr>
+      <td>{</td>
+      <td>向前置换当前面板</td>
+    </tr>
+    <tr>
+      <td>}</td>
+      <td>向后置换当前面板</td>
+    </tr>
+    <tr>
+      <td>Alt+o</td>
+      <td>逆时针旋转当前窗口的面板</td>
+    </tr>
+    <tr>
+      <td>Ctrl+o</td>
+      <td>顺时针旋转当前窗口的面板</td>
+    </tr>
+    <tr>
+      <td>z</td>
+      <td>tmux 1.8新特性，最大化当前所在面板</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-2">参考</h1>
+
+<ul>
+  <li><a href="https://wiki.archlinux.org/index.php/Tmux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">Archlinux Tmux</a></li>
+</ul>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#使用配置-ref">
+    		使用配置 <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#Tmux-ref">Tmux <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/MenuApp" title="MenuApp">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/ffmpeg" title="ffmpeg">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

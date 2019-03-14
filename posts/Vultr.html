@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>Vultr</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>Vultr </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2018-04-21 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">配置vps</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-2">
+                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">安装</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">配置自动登录</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-4">
+              <a href="#tocAnchor-1-4"><span class="tocnumber">2</span> <span class="toctext">配置shadowsocks</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-4-1"><span class="tocnumber">2.1</span> <span class="toctext">vps 端</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-4-2"><span class="tocnumber">2.2</span> <span class="toctext">本地</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-7">
+              <a href="#tocAnchor-1-7"><span class="tocnumber">3</span> <span class="toctext">配置 blog</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-8">
+              <a href="#tocAnchor-1-8"><span class="tocnumber">4</span> <span class="toctext">配置DNS</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-9">
+              <a href="#tocAnchor-1-9"><span class="tocnumber">5</span> <span class="toctext">备份</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-10">
+              <a href="#tocAnchor-1-10"><span class="tocnumber">6</span> <span class="toctext">当前信息</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>https://my.vultr.com/</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">配置vps</h1>
+
+<h2 id="tocAnchor-1-1-1">安装</h2>
+<ol>
+  <li>进入 https://www.vultr.com/ 邮箱密码注册账号</li>
+  <li>左侧点billing，右边make payment，选alipay，选择$10即可</li>
+  <li>左侧点servers，location:纽约, ubuntu:18.04, $2.5/mo, deploy</li>
+  <li>等待installing，等到running，点进去manage查看信息</li>
+  <li>优惠点击 https://my.vultr.com/promo/ 3美元赠送</li>
+</ol>
+
+<h2 id="tocAnchor-1-1-2">配置自动登录</h2>
+<ol>
+  <li>电脑上 ping 一下IP是否通了，不行的话destroy server 再deploy一次</li>
+  <li>设置自动登录
+    <ol>
+      <li>本地: ssh-keygen -b 1024 -t rsa # 输入名字即可，密码等可以跳过</li>
+      <li>本地: ssh-copy-id -i ~/.ssh/yaccai.pub  root@vpsip</li>
+      <li>本地: ssh         -i ~/.ssh/yaccai      root@vpsip</li>
+    </ol>
+  </li>
+</ol>
+
+<h1 id="tocAnchor-1-4">配置shadowsocks</h1>
+
+<h2 id="tocAnchor-1-4-1">vps 端</h2>
+<ol>
+  <li>下载 https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</li>
+  <li>chmod +x shadowsocks.sh; ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</li>
+  <li>会提示创建ss的密码和端口随便填，最后cipher 最好选择7即aes-256-cfb</li>
+  <li>等1分钟左右，出现congratulations，记下IP，port，password，encrytion</li>
+</ol>
+
+<h2 id="tocAnchor-1-4-2">本地</h2>
+<ol>
+  <li>brew cask install shadowsocksx-ng</li>
+  <li>按vps安装shadowsocks.sh显示的信息填 IP, 端口, 密码, 加密方法</li>
+</ol>
+
+<h1 id="tocAnchor-1-7">配置 blog</h1>
+<ol>
+  <li>vps 安装 nginx
+    <ul>
+      <li>apt install nginx</li>
+      <li>systemctl enable nginx</li>
+      <li>systemctl start nginx</li>
+    </ul>
+  </li>
+  <li>vps配置dns
+    <ul>
+      <li>godaddy 买一个域名</li>
+      <li>点vultr中server的DNS，再点add domain，填写。</li>
+      <li>接着点笔 edit domain添加一条 A www ip 3600</li>
+      <li>把ns1.vultr.com的ip加入本地的dns服务器列表</li>
+      <li>等几个小时后生效</li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="tocAnchor-1-8">配置DNS</h1>
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+在godadday买一个域名比如x.space。添加记录
+类型   名称    值       TTL
+A      @      vpsip   600
+CNAME  www    @       3600
+</code>
+    </pre>
+  </div>
+</div>
+
+<h1 id="tocAnchor-1-9">备份</h1>
+<ul>
+  <li>rsync -e “ssh -i ~/.ssh/yaccai” -tr ~/iconfig/vps/etc/nginx/nginx.conf root@208.167.253.45:/etc/nginx/nginx.conf</li>
+  <li>rsync -e “ssh -i ~/.ssh/yaccai” -tr –progress ~/Code/yaccai.github.io root@208.167.253.45:/root –exclude .git –delete</li>
+</ul>
+
+<h1 id="tocAnchor-1-10">当前信息</h1>
+
+<ol>
+  <li>vultr 账户
+    <ol>
+      <li>name:wall break</li>
+      <li>email: wy20150302@163.com</li>
+      <li>pwd: 咳咳</li>
+    </ol>
+  </li>
+  <li>vps
+    <ol>
+      <li>ip: 208.167.253.45</li>
+      <li>name:root</li>
+      <li>pwd: 查得到</li>
+      <li>2.5$一个月，0.5T流量</li>
+    </ol>
+  </li>
+  <li>shadowsocks server
+    <ol>
+      <li>ip: 同上</li>
+      <li>port：8848</li>
+      <li>密码: 查得到</li>
+      <li>加密: aes-256-cfb</li>
+    </ol>
+  </li>
+</ol>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#使用配置-ref">
+    		使用配置 <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#翻墙-ref">翻墙 <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/lintcode%E8%A7%A3%E9%A2%98%E6%80%BB%E7%BB%93" title="lintcode解题总结">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/rsync" title="rsync">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

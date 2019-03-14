@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>rsync</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>rsync </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2018-05-12 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">Description</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">General</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">daemon 模式使用和配置</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-4">
+              <a href="#tocAnchor-1-4"><span class="tocnumber">3</span> <span class="toctext">选项（常用）</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-5">
+              <a href="#tocAnchor-1-5"><span class="tocnumber">4</span> <span class="toctext">匹配</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-5-1"><span class="tocnumber">4.1</span> <span class="toctext">规则</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>rsync 远程或本地复制工具，可以看做是cp的替代。
+翻译自 
+<!-- more --></p>
+
+<h1 id="tocAnchor-1-1">Description</h1>
+
+<ul>
+  <li>提供了大量的选项，可以灵活控制传输的细节。</li>
+  <li>增量算法可以使rsync只传输文件的差异部分，大大减少传输的数据量。</li>
+  <li>广泛用于备份，监控以及作为cp命令的替代</li>
+  <li>其他特点
+    <ul>
+      <li>支持复制文件各种属性：ower，group，permission，devices，links</li>
+      <li>文件排除选项，指定要排除的文件，类似于tar</li>
+      <li>类似于cvs的排除模式</li>
+      <li>使用远程remote shell，常见的也就是ssh，还有rsh</li>
+      <li>不需要超级权限</li>
+      <li>传输管道化，以减少延迟</li>
+      <li>支持匿名/授权的 daemon模式，非常适合用来监控</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="tocAnchor-1-2">General</h1>
+
+<p>rsync支持在本机上同本机/远程计算机之间复制文件，不支持两个远程计算机之间复制文件。</p>
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+Local:  rsync <span class="o">[</span>OPTION...] SRC... <span class="o">[</span>DEST]
+
+via remote shell:
+  Pull: rsync <span class="o">[</span>OPTION...] <span class="o">[</span>USER@]HOST:SRC... <span class="o">[</span>DEST]
+  Push: rsync <span class="o">[</span>OPTION...] SRC... <span class="o">[</span>USER@]HOST:DEST
+
+via rsync daemon:
+  Pull: rsync <span class="o">[</span>OPTION...] <span class="o">[</span>USER@]HOST::MODULE_SRC... <span class="o">[</span>DEST]
+        <span class="c"># rsync [OPTION...] rsync://[USER@]HOST[:PORT]/SRC... [DEST]</span>
+  Push: rsync <span class="o">[</span>OPTION...] SRC... <span class="o">[</span>USER@]HOST::MODULE_DEST
+        <span class="c"># rsync [OPTION...] SRC... rsync://[USER@]HOST[:PORT]/DEST</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>rsync在与远程host传输数据时，有两种方式。一种是使用远程shell(通过-e或者RSYNC_RSH环境变量来设置)，常见的就是ssh。另一种是通过TCP使用rsync daemon。前者在user@host后面使用一个冒号，后者使用两个。</p>
+
+<p>如果只指定了一个文件选项，那么这个选项会被当做source，执行效果相当于ls</p>
+
+<p>通常可以指定多个源文件，要复制到的DEST只能有一个，并且放在最后:
+​    <code class="highlighter-rouge">rsync -av host:file1 :file2 host:file{3,4} /dest/</code></p>
+
+<p>当dest端存在要传输的文件时，会比较文件的大小和modify-timestamps，只要有一个不同就会传输、更新</p>
+
+<h2 id="tocAnchor-1-2-1">daemon 模式使用和配置</h2>
+
+<h1 id="tocAnchor-1-4">选项（常用）</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>option</th>
+      <th>meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-v, –verbose</td>
+      <td>显示更多信息，-vv更更多信息，三个及以上v，只在debug用</td>
+    </tr>
+    <tr>
+      <td>-q, –quiet</td>
+      <td>安静，在后台调用比如cron时常选用</td>
+    </tr>
+    <tr>
+      <td>-I, –ignore-times</td>
+      <td>通常大小且mtime一致的文件不被更新。这个选项会强制传输更新</td>
+    </tr>
+    <tr>
+      <td>–size-only</td>
+      <td>只用大小检测，只在文件大小不一致时才传输。仅mtime不一致没用</td>
+    </tr>
+    <tr>
+      <td>–modify-window</td>
+      <td>mtime不必精确相等，在阈值范围即可，默认阈值是0</td>
+    </tr>
+    <tr>
+      <td>-c, –checksum</td>
+      <td>不使用大小-mtime检测，使用如md5的校验，如果不同，传输更新</td>
+    </tr>
+    <tr>
+      <td>-a, –archive</td>
+      <td>等于 -rlptgoD</td>
+    </tr>
+    <tr>
+      <td>–no-&lt;option&gt;</td>
+      <td>取消某选项。-a –no-o 等于 -rlptgD</td>
+    </tr>
+    <tr>
+      <td>-d, –dirs</td>
+      <td>递归复制，但只复制目录，文件不复制</td>
+    </tr>
+    <tr>
+      <td>-r, –recursive</td>
+      <td>递归复制</td>
+    </tr>
+    <tr>
+      <td>-R, –relative</td>
+      <td>SRC全名都会传输，否则只有最后的名字，保持目录树</td>
+    </tr>
+    <tr>
+      <td>-b, –backup</td>
+      <td>如果更新则备份旧文件</td>
+    </tr>
+    <tr>
+      <td>–backup-dir=DIR</td>
+      <td>如果有-b，将旧文件备份到DIR</td>
+    </tr>
+    <tr>
+      <td>–suffix=SUFFIX</td>
+      <td>如果有-b，备份旧文件加个后缀，默认~</td>
+    </tr>
+    <tr>
+      <td>-u, –update</td>
+      <td>dest 文件更新时（不包括相等），忽略大小强制跳过</td>
+    </tr>
+    <tr>
+      <td>–inplace</td>
+      <td>就地更新不创建中间文件。有益大文件，被其他程序使用的文件不要这样</td>
+    </tr>
+    <tr>
+      <td>–append</td>
+      <td>更新时把数据追加到dest文件的尾部</td>
+    </tr>
+    <tr>
+      <td>-l, –links</td>
+      <td>遇到连接时，重新创建连接</td>
+    </tr>
+    <tr>
+      <td>-L, –copy-links</td>
+      <td>遇到连接时，复制连接指向的文件</td>
+    </tr>
+    <tr>
+      <td>-p, –perms</td>
+      <td>传输保持permissions</td>
+    </tr>
+    <tr>
+      <td>-E, –executability</td>
+      <td>保持x属性</td>
+    </tr>
+    <tr>
+      <td>-X, –xattrs</td>
+      <td>保持附加属性</td>
+    </tr>
+    <tr>
+      <td>-o, –owner</td>
+      <td>如果接收端rsync是super，保持owner属性</td>
+    </tr>
+    <tr>
+      <td>-g, –group</td>
+      <td>保持group属性，但也要接收端是super在运行rsync</td>
+    </tr>
+    <tr>
+      <td>-t, –times</td>
+      <td>保持modification times</td>
+    </tr>
+    <tr>
+      <td>-n, –dry-run</td>
+      <td>dry</td>
+    </tr>
+    <tr>
+      <td>–existing</td>
+      <td>dest端不存在的文件，不创建，只更新</td>
+    </tr>
+    <tr>
+      <td>–ignore-non-existing</td>
+      <td>同上</td>
+    </tr>
+    <tr>
+      <td>–ignore-existing</td>
+      <td>只传输dest没有的文件，已有的不更新</td>
+    </tr>
+    <tr>
+      <td>–remove-source-files</td>
+      <td>src端传输后删除</td>
+    </tr>
+    <tr>
+      <td>–delete</td>
+      <td>dest端删除无关文件，保持和src严格相同</td>
+    </tr>
+    <tr>
+      <td>–bwlimit=KBPS</td>
+      <td>限制速度</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-5">匹配</h1>
+
+<p>–exclude= 和 –include= 相当于 –filter=“-” 和 –filter=“+”</p>
+
+<h2 id="tocAnchor-1-5-1">规则</h2>
+
+<ul>
+  <li>对于已经创建好的file list中的文件或目录，rsync会按先后顺序对其中的每一个名称检查是否能匹配incluee/exclude规，且先匹配上的规则生效：
+    <ul>
+      <li>如果能匹配任何一个exclude，跳过</li>
+      <li>如果能匹配任何一个include，不跳过</li>
+      <li>任何规则都不能匹配，不跳过</li>
+    </ul>
+  </li>
+  <li>匹配是在创建了文件列表（自定而下的搜索之后）之后，进行的。匹配是针对路径上任何一个component</li>
+  <li>“/foo” 中的 斜杠类似于开始的意思，表示foo要从文件路径根处匹配。以下两处都表示排除/Volumes/Doc下面以.开头的文件或目录：
+    <ul>
+      <li>rsync -af ‘- /Doc/.*’ /Volumes/Doc   .   # /Volumes/Doc 的root是/Volumes</li>
+      <li>rsync -af ‘- /.*’         /Volumes/Doc/  .   # /Volumes/Doc/的root是/Volumes/Doc</li>
+    </ul>
+  </li>
+  <li>
+    <p>“foo/”这种 尾部斜杠，表示foo必须匹配的是一个目录才行</p>
+  </li>
+  <li>
+    <p>‘*’  matches any path component, but it stops at slashes.</p>
+  </li>
+  <li>
+    <p>‘**’ to match anything, including slashes.</p>
+  </li>
+  <li>’?’  matches any character except a slash (/).</li>
+</ul>
+
+<p>’-  /foo/*/bar‘     * 不包含/ ，foo和bar只有一层目录</p>
+
+<p>’- /foo/**/bar’   **匹配任意多个/，foo和bar可以有任意多层目录</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>表达式</th>
+      <th>item是文件</th>
+      <th>item是目录</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>’- item’</td>
+      <td>排除</td>
+      <td>连带下属，全部排除</td>
+    </tr>
+    <tr>
+      <td>’- item/’</td>
+      <td>不排除</td>
+      <td>连带下属，全部排除</td>
+    </tr>
+    <tr>
+      <td>’- item/*’</td>
+      <td>不排除</td>
+      <td>不排除item目录本身，下属全部排除</td>
+    </tr>
+    <tr>
+      <td>’- item/**’</td>
+      <td>不排除</td>
+      <td>不排除item目录本身，下属全部排除</td>
+    </tr>
+    <tr>
+      <td>’- item/***’</td>
+      <td>不排除</td>
+      <td>连带下属，全部排除</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>rsync -av –filter=’+ */’ –filter=’- *’ ~/Code/algrithm  ~/Downloads 表示复制目录</p>
+
+    </div>
+
+    <hr>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#rsync-ref">rsync <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/Vultr" title="Vultr">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/%E7%A3%81%E7%9B%98" title="磁盘">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

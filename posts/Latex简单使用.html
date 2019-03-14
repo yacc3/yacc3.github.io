@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>Latex简单使用</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>Latex简单使用 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2014-10-13 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">安装配置</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-2">
+                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">安装</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">编辑器配置</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-4">
+                  <a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">使用系统字体</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-5">
+              <a href="#tocAnchor-1-5"><span class="tocnumber">2</span> <span class="toctext">简介</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-5-1"><span class="tocnumber">2.1</span> <span class="toctext">版本介绍</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-7">
+              <a href="#tocAnchor-1-7"><span class="tocnumber">3</span> <span class="toctext">latex 文件</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-8">
+                  <a href="#tocAnchor-1-7-1"><span class="tocnumber">3.1</span> <span class="toctext">文件</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-9">
+                  <a href="#tocAnchor-1-7-2"><span class="tocnumber">3.2</span> <span class="toctext">字体文件</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-10">
+                  <a href="#tocAnchor-1-7-3"><span class="tocnumber">3.3</span> <span class="toctext">文件组织</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-11">
+              <a href="#tocAnchor-1-11"><span class="tocnumber">4</span> <span class="toctext">文档元素</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-12">
+                  <a href="#tocAnchor-1-11-1"><span class="tocnumber">4.1</span> <span class="toctext">文档类</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-13">
+                  <a href="#tocAnchor-1-11-2"><span class="tocnumber">4.2</span> <span class="toctext">导言区设置</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-14">
+                  <a href="#tocAnchor-1-11-3"><span class="tocnumber">4.3</span> <span class="toctext">目录</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-15">
+                  <a href="#tocAnchor-1-11-4"><span class="tocnumber">4.4</span> <span class="toctext">段落</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-16">
+                  <a href="#tocAnchor-1-11-5"><span class="tocnumber">4.5</span> <span class="toctext">浮动体</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-17">
+                  <a href="#tocAnchor-1-11-6"><span class="tocnumber">4.6</span> <span class="toctext">图片</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-18">
+                  <a href="#tocAnchor-1-11-7"><span class="tocnumber">4.7</span> <span class="toctext">公式</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-19">
+                  <a href="#tocAnchor-1-11-8"><span class="tocnumber">4.8</span> <span class="toctext">其他</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>Latex 基本的使用，不包含复杂功能</p>
+
+<ul>
+  <li><a href="http://texdoc.net/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf">中文简介</a></li>
+  <li><a href="http://nwalsh.com/tex/">在线命令解释</a></li>
+  <li><a href="http://www.ctan.org/">CTAN</a></li>
+</ul>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">安装配置</h1>
+
+<h2 id="tocAnchor-1-1-1">安装</h2>
+<ul>
+  <li>全版本 brew cask install mactex</li>
+  <li>基本版 brew cask install basictex</li>
+</ul>
+
+<h2 id="tocAnchor-1-1-2">编辑器配置</h2>
+<ul>
+  <li>texshop
+    <ul>
+      <li>源代码 文档字体 ：melo regular - 12</li>
+      <li>源代码 编码：UTF-8</li>
+      <li>排版  采用键入的指令 XeLaTeX</li>
+    </ul>
+  </li>
+  <li>sublime text + skim
+    <ul>
+      <li>安装插件 latextools 必要时在latex.sublime-build 注释掉xelatex以外选项</li>
+      <li>安装 skim 选项 同步 预设 选择 sublime-text，pdf 自动调整大小</li>
+      <li>自动补全插件 LaTeX-cwl</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tocAnchor-1-1-3">使用系统字体</h2>
+<p>编辑 texmf.cnf 增加
+<code class="highlighter-rouge">OSFONTDIR =/Library/Fonts//;~/Library/Fonts//;/System/Library/Fonts//</code></p>
+
+<h1 id="tocAnchor-1-5">简介</h1>
+
+<h2 id="tocAnchor-1-5-1">版本介绍</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>类型</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TeX</td>
+      <td>最基础的宏语言。TeX系统大概内建了300条命令</td>
+    </tr>
+    <tr>
+      <td>Plain Tex</td>
+      <td>对TeX的初步包装 增加 大约600条有用的命令</td>
+    </tr>
+    <tr>
+      <td>LaTex</td>
+      <td>Lamport编写，基于TeX的更高层次的包装</td>
+    </tr>
+    <tr>
+      <td>pdfTeX</td>
+      <td>pdfTeX便是对TeX进行了修改使其可以直接输出PDF文档格式</td>
+    </tr>
+    <tr>
+      <td>XeTeX</td>
+      <td>支持Unicode 编码和直接访问操作系统字体。</td>
+    </tr>
+    <tr>
+      <td>LuaTeX</td>
+      <td>更贴近现有的编程语言，但不稳定</td>
+    </tr>
+    <tr>
+      <td>ConTeXt</td>
+      <td>对Tex的另一个扩展，期望减轻繁琐的排版</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-7">latex 文件</h1>
+
+<h2 id="tocAnchor-1-7-1">文件</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>类型</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>.tex</td>
+      <td>latex 文件</td>
+    </tr>
+    <tr>
+      <td>.sty</td>
+      <td>宏包文件。宏包的名称就是去掉扩展名的文件名。</td>
+    </tr>
+    <tr>
+      <td>.cls</td>
+      <td>文档类文件。同样地，文档类名称就是文件名。</td>
+    </tr>
+    <tr>
+      <td>.bib</td>
+      <td>BIBTEX 参考文献数据库文件。</td>
+    </tr>
+    <tr>
+      <td>.bst</td>
+      <td>BIBTEX 用到的参考文献格式模板。详见 6.1.3 小节。</td>
+    </tr>
+    <tr>
+      <td>.log</td>
+      <td>排版引擎生成的日志文件，供排查错误使用。</td>
+    </tr>
+    <tr>
+      <td>.aux</td>
+      <td>LATEX 生成的主辅助文件，记录交叉引用、目录、参考文献的引用等。</td>
+    </tr>
+    <tr>
+      <td>.toc</td>
+      <td>LATEX 生成的目录记录文件。</td>
+    </tr>
+    <tr>
+      <td>.lof</td>
+      <td>LATEX 生成的图片目录记录文件。</td>
+    </tr>
+    <tr>
+      <td>.lot</td>
+      <td>LATEX 生成的表格目录记录文件。</td>
+    </tr>
+    <tr>
+      <td>.bbl</td>
+      <td>BIBTEX 生成的参考文献记录文件。</td>
+    </tr>
+    <tr>
+      <td>.blg</td>
+      <td>BIBTEX 生成的日志文件。</td>
+    </tr>
+    <tr>
+      <td>.idx</td>
+      <td>LATEX 生成的供 makeindex 处理的索引记录文件。</td>
+    </tr>
+    <tr>
+      <td>.ind</td>
+      <td>makeindex 处理 .idx 生成的格式化索引记录文件。</td>
+    </tr>
+    <tr>
+      <td>.ilg</td>
+      <td>makeindex 生成的日志文件。</td>
+    </tr>
+    <tr>
+      <td>.out</td>
+      <td>hyperref 宏包生成的 PDF 书签记录文件。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tocAnchor-1-7-2">字体文件</h2>
+
+<p>
+  <a href="http://www.latexstudio.net/archives/9051">这里</a>
+</p>
+
+<h2 id="tocAnchor-1-7-3">文件组织</h2>
+
+<p>\include{⟨filename⟩}</p>
+
+<ul>
+  <li>\include{chapters/a.tex} % 相对路径</li>
+  <li>\include{/home/Bob/file.tex} % Linux 绝对路径</li>
+  <li>\include{D:/file.tex} % Windows 绝对路径</li>
+</ul>
+
+<p>\include 在读入 ⟨filename⟩ 之前会另起一页。有的时候我们并不需要这样，
+而是用 \input 命令</p>
+
+<h1 id="tocAnchor-1-11">文档元素</h1>
+
+<div class="language-latex highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>   
+<span class="c">% 导言区：声明用到的包，添加文档的 作者 标题 日期等信息</span>
+<span class="nt">\begin{document}</span>  
+<span class="c">% 内容区</span>
+<span class="nt">\end{document}</span>  
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>以反斜杠\开头的是控制序列，控制输出。大括号中间的是环境名，例如document</p>
+
+<h2 id="tocAnchor-1-11-1">文档类</h2>
+
+<p>\documentclass[⟨options⟩]{⟨class-name⟩}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>class-name</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>article</td>
+      <td>文章格式的文档类，广泛用于科技论文、报告、说明文档等。</td>
+    </tr>
+    <tr>
+      <td>report</td>
+      <td>长篇报告格式的文档类，具有章节结构，用于综述、长篇论文、简单的书籍等。</td>
+    </tr>
+    <tr>
+      <td>book</td>
+      <td>书籍文档类，包含章节结构和前言、正文、后记等结构。</td>
+    </tr>
+    <tr>
+      <td>proc</td>
+      <td>基于 article 文档类的一个简单的学术文档模板。</td>
+    </tr>
+    <tr>
+      <td>slides</td>
+      <td>幻灯格式的文档类，使用无衬线字体。</td>
+    </tr>
+    <tr>
+      <td>minimal</td>
+      <td>一个极其精简的文档类，只设定了纸张大小和字号</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>options：<br />
+为文档类指定选项，以全局地影响文档布局的参数，如字号、纸张大小、<br />
+单双面等等 : \documentclass[11pt,twoside,a4paper]{article}</p>
+
+<h2 id="tocAnchor-1-11-2">导言区设置</h2>
+
+<h3 id="调用包">调用包</h3>
+
+<p>搜索包：<a href="http://www.ctan.org/">CTAN</a> 搜索包信息，及其文档<br />
+格式： \usepackage[⟨options⟩]{⟨package-name⟩}</p>
+
+<p>一次性载入多个 ：\usepackage{tabularx,longtable,multirow}</p>
+
+<h3 id="中文">中文</h3>
+<p>ctex 宏包和文档类是对 CJK 和 xeCJK 等宏包的进一步封装。ctex 文档类包括 ctexart
+ctexrep ctexbook，</p>
+
+<h3 id="信息">信息</h3>
+
+<div class="language-latex highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>                     <span class="c">% 导言区</span>
+<span class="k">\title</span><span class="p">{</span>你好，world!<span class="p">}</span>  <span class="c">% 标题</span>
+<span class="k">\author</span><span class="p">{</span>Liam<span class="p">}</span>        <span class="c">% 作者</span>
+<span class="k">\date</span><span class="p">{</span><span class="k">\today</span><span class="p">}</span>        <span class="c">% 日期</span>
+<span class="nt">\begin{document}</span>     <span class="c">% 内容区开始</span>
+<span class="k">\maketitle</span>
+<span class="k">\tableofcontents</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<h3 id="页面">页面</h3>
+
+<p>使用 <a href="http://texdoc.net/texmf-dist/doc/latex/geometry/geometry.pdf">geometry</a>  宏包设置页面参数</p>
+
+<div class="language-latex highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="k">\usepackage</span><span class="p">{</span>geometry<span class="p">}</span>
+<span class="k">\geometry</span><span class="p">{</span>papersize=<span class="p">{</span>20cm,15cm<span class="p">}}</span>
+<span class="k">\geometry</span><span class="p">{</span>left=1cm,right=2cm,top=3cm,bottom=4cm<span class="p">}</span>
+</code>
+    </pre>
+  </div>
+</div>
+<p>将纸张的长度设置为 20cm、宽度设置为 15cm、左边距 1cm、右边距 2cm、上边距 3cm、下边距 4cm</p>
+
+<h3 id="页眉页脚">页眉页脚</h3>
+<p>推荐使用 <a href="http://texdoc.net/texmf-dist/doc/latex/fancyhdr/fancyhdr.pdf">fancyhdr</a> 宏包</p>
+
+<div class="language-latex highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="k">\usepackage</span><span class="p">{</span>fancyhdr<span class="p">}</span>
+<span class="k">\pagestyle</span><span class="p">{</span>fancy<span class="p">}</span>                        <span class="c">% 页眉页脚格式 fancy </span>
+<span class="k">\lhead</span><span class="p">{</span><span class="k">\author</span><span class="p">}</span>                          <span class="c">% 页眉左边</span>
+<span class="k">\chead</span><span class="p">{</span><span class="k">\date</span><span class="p">}</span>                            <span class="c">% 页眉中间</span>
+<span class="k">\rhead</span><span class="p">{</span>152xxxxxxxx<span class="p">}</span>                      <span class="c">% 页眉右边</span>
+<span class="k">\lfoot</span><span class="p">{}</span>                                 <span class="c">%</span>
+<span class="k">\cfoot</span><span class="p">{</span><span class="k">\thepage</span><span class="p">}</span>                         <span class="c">% 页脚中间 填写页码</span>
+<span class="k">\rfoot</span><span class="p">{}</span>                                 <span class="c">% 页脚</span>
+<span class="k">\renewcommand</span><span class="p">{</span><span class="k">\headrulewidth</span><span class="p">}{</span>0.4pt<span class="p">}</span>
+<span class="k">\renewcommand</span><span class="p">{</span><span class="k">\headwidth</span><span class="p">}{</span><span class="k">\textwidth</span><span class="p">}</span>
+<span class="k">\renewcommand</span><span class="p">{</span><span class="k">\footrulewidth</span><span class="p">}{</span>0pt<span class="p">}</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>\thispagestyle{⟨page-style⟩} 只影响当前页面</p>
+
+<h3 id="首行缩进">首行缩进</h3>
+
+<p>汉字的首行缩进</p>
+
+<ul>
+  <li>使用Ctex</li>
+  <li>在导言区调用 \usepackage{indentfirst} 以及 \setlength{\parindent}{\ccwd}
+    <ul>
+      <li>\ccwd 是当前字号下一个中文汉字的宽度。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="间距">间距</h3>
+<ul>
+  <li>行间距: setspace宏包 \onehalfspacing % 将行距设置为字号的 1.5 倍</li>
+  <li>段间距: \parskip:\addtolength{\parskip}{.4em} 增加段间距 0.4em 缩小用负数</li>
+</ul>
+
+<h2 id="tocAnchor-1-11-3">目录</h2>
+
+<p>使用\tableofcontents 在文档区开始的地方，一般在\maketitle 之后</p>
+
+<p>手动增加目录 \addcontentsline{toc}{⟨level⟩}{⟨title⟩}</p>
+
+<h2 id="tocAnchor-1-11-4">段落</h2>
+
+<p>article类型的文档中有下面五中结构</p>
+
+<ul>
+  <li>\section{title}</li>
+  <li>\subsection{title}</li>
+  <li>\subsubsection{title}  % 三个层次的章节 括号内是章节名</li>
+  <li>\paragraph{title}</li>
+  <li>\subparagraph{title}   % 两级段落 花括号内相当于段首，会加粗</li>
+</ul>
+
+<p>book 和 report 还提供了章一级的结构： \chapter{⟨title⟩}</p>
+
+<ul>
+  <li>\section[⟨short title⟩]{⟨title⟩} 标题使用title，目录和页眉页脚中使用short title</li>
+  <li>\section*{⟨title⟩} 标题不带编号，也不生成目录项和页眉页脚。</li>
+</ul>
+
+<p>以下长度分别为段落的左缩进、右缩进和首行缩进，在分段时生效。</p>
+
+<ul>
+  <li>\setlength{\leftskip}{20pt}</li>
+  <li>\setlength{\rightskip}{20pt}</li>
+  <li>\setlength{\parindent}{2em}</li>
+  <li>段首缩进 \noindent关闭段首缩进 \indent强制开启缩进</li>
+  <li>水平间距 \hspace{⟨length⟩} 单词之间的水平间距</li>
+  <li>垂直间距 \vspace{⟨length⟩} 段落之间的垂直间距</li>
+</ul>
+
+<pre>
+  <code class="language-\titleformat{⟨command⟩}[⟨shape⟩]{⟨format⟩}{⟨label⟩}{⟨sep⟩}{⟨before-code⟩}[⟨after-code⟩]```">
+|                 | 说明                                                         |
+| --------------- | ------------------------------------------------------------ |
+| ⟨*command*⟩     | 被重新定义的命令，比如\part，\chapter，\section，\subsection 。。。 |
+| ⟨*shape*⟩       | 段落的外形，如hang、block、display                           |
+| ⟨*format*⟩      | 标题格式，比如字体大小、居中、加粗；                         |
+| ⟨*label*⟩       | 标题的外观，比如： 第 \thesection.\arabic{subsection} 节     |
+| ⟨*sep*⟩         | horizontal separation between label and title body           |
+| ⟨*before-code*⟩ |                                                              |
+| ⟨*after-code*⟩  |                                                              |
+```\titlecontents{⟨section⟩}[⟨left⟩]{⟨above-code⟩} {⟨numbered-entry-format⟩}{⟨numberless-entry-format⟩}{⟨filler-page-format⟩}[⟨below-code⟩]```
+
+
+
+|              | 说明                                                   |
+| ------------ | ------------------------------------------------------ |
+| ⟨section⟩    | 要修改的层级，section、subsection、subsubsection。。。 |
+| ⟨left⟩       | sets the left margin from the left page margin         |
+| ⟨above-code⟩ |                                                        |
+|              |                                                        |
+|              |                                                        |
+|              |                                                        |
+|              |                                                        |
+
+- 标题名 设置所需修改的某一层次标题格式的标题名，如chapter、section等层次标题名，或是table和figure图表标题名
+- 左间距 可选参数，不能省略
+- 标题格式 设置标题的整体格式，如字体、字体尺寸、与上一个标题的垂直距离等。该参数可空置。
+- 标题标志 设置标题标志的格式,如序号格式、序号宽度、序号与标题内容之间的间距等。该参数不能空置, 否则标题将无标题标志。
+- 无序号标题 设置无序号标题的格式, 如字体、字体尺寸等。 该参数可以空置
+- 指引线与页码 设置标题与页码之间的指引线样式以及页码的格式, 该参数如果空置,标题将无指引线和页码。
+- 下间距 可选参数, 用于设置标题排版后还需要执行的命令, 例如与下个标题的垂直间距等。该参数常被省略。
+- 
+## 字体
+
+大小
+
+| 字号            | 10pt 选项（默认） | 11pt 选项 | 12pt 选项 |
+| ------------- | ----------- | ------- | ------- |
+| \tiny         | 5pt         | 6pt     | 6pt     |
+| \scriptsize   | 7pt         | 8pt     | 8pt     |
+| \footnotesize | 8pt         | 9pt     | 10pt    |
+| \small        | 9pt         | 10pt    | 10.95pt |
+| \normalsize   | 10pt        | 10.95pt | 12pt    |
+| \large        | 12pt        | 12pt    | 14.4pt  |
+| \Large        | 14.4pt      | 14.4pt  | 17.28pt |
+| \LARGE        | 17.28pt     | 17.28pt | 20.74pt |
+| \huge         | 20.74pt     | 20.74pt | 24.88pt |
+| \Huge         | 24.88pt     | 24.88pt | 24.88pt |
+
+字体
+
+| 命令格式        | 格式2              | 说明                 |
+| ----------- | ---------------- | ------------------ |
+| \rmfamily   | \textrm{...}     | roman 衬线字体（罗马体）    |
+| \sffamily   | \textsf{...}     | sans serif 无衬线字体   |
+| \ttfamily   | \texttt{...}     | typewriter 等宽字体    |
+| \mdseries   | \textmd{...}     | medium 正常粗细（中等）    |
+| \bfseries   | \textbf{...}     | bold face 粗体       |
+| \upshape    | \textup{...}     | upright 直立体        |
+| \itshape    | \textit{...}     | italic 意大利斜体       |
+| \slshape    | \textsl{...}     | slanted 倾斜体        |
+| \scshape    | \textsc{...}     | Small Caps 小字母大写   |
+| \em         | \emph{...}       | emphasized 强调，默认斜体 |
+| \normalfont | \textnormal{...} | normal font 默认字体   |
+
+
+## 符号
+
+### 常用符号
+
+| 字符   | 表示                                       |
+| ---- | ---------------------------------------- |
+| 空格   | tab，连续的空格和单个换行都视为一个空格                    |
+| 换行   | 两个换行或双反斜杠作为换行，连续多个换行视为一个换行。\par也会换行      |
+| 注释   | % 之后                                     |
+| 连字   | 西文中ff fi ffl等 可在中间加上{} It’s dif{}f{}icult to f{}ind \ldots |
+| 引号   | 单引号 ‘ 和 ’ 双引号用 ‘‘ 和 ’’                   |
+| 破折   | 单-用作连字号 两个即--用于范围表示pages 13--67 三个即---用于破折号 |
+| 省略   | \ldots  \dots                            |
+| 波浪   | \~ 不是很理想 位置靠上，数学公式中的 $\sim$ 更好看          |
+| 音标   | H\^otel  na\"\i ve  \’el\‘eve  \’el\‘eve |
+| 断行   | \\ or \newline                           |
+| 断页   | \newpage or \clearpage                   |
+| 断词   | 手动使用 \- 命令指定断词的位置，需要时tex会在\-的位置断开        |
+
+| 字符         | 表示       | 其他        |
+| ------------| ---------- | ------------|
+| 两个quad空格 | a \qquad b | 两个m的宽度  |
+| quad空格     | a \quad b  | 一个m的宽度  |
+| 大空格       | a\ b       | 1/3m宽度    |
+| 中等空格     | a\;b       | 2/7m宽度     |
+| 小空格       | a\,b       | 1/6m宽度     |
+| 没有空格     | ab         |             |
+| 紧贴         | a\!b       | 缩进1/6m宽度 |
+
+
+## 特殊符号
+希腊符号 数学运算符等
+
+
+## 表格
+tabular 环境提供了最简单的表格功能
+
+\begin{tabular}[pos]{table spec}
+
+- 用 \| 表示竖线；
+- 用 &amp; 来分列，
+- 用 \\ 来换行；
+- 用 l、c、r 来表示居左、居中、居右
+- p{列宽} 文本顶对齐 b{列宽} 文本底对齐 m{列宽} 文本居中对齐
+- @{声明} 该列每行插入声明中文本
+
+\begin{tabular}{rp{0.82\textwidth} l} 第一列 水平右对齐，垂直顶对齐 列宽0.82个页面文本宽度
+
+## 列表
+```latex
+\begin{enumerate}
+\item . . . % 
+\end{enumerate}
+</code>
+</pre>
+
+<ul>
+  <li>enumerate 为有序 itemize为无序 格式相同</li>
+  <li>\item[替换符号] 可带参数，将计数或者符号替换成自定义的符</li>
+  <li>列表可以嵌套使用，最多嵌套四层。</li>
+  <li>description 与两者类似，但是\item的参数为关键字，必填</li>
+</ul>
+
+<h2 id="tocAnchor-1-11-5">浮动体</h2>
+<p>figure 和 table 环境可以自动调整图表的位置</p>
+
+<div class="language-latex highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nt">\begin{figure}</span>[htbp]
+<span class="k">\centering</span>
+<span class="k">\includegraphics</span><span class="p">{</span>a.png<span class="p">}</span>
+<span class="k">\caption</span><span class="p">{</span>有图有真相<span class="p">}</span>
+<span class="k">\label</span><span class="p">{</span>fig:myphoto<span class="p">}</span>
+<span class="nt">\end{figure}</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<ul>
+  <li>htbp 用来指定插图的理想位置 分别代表here, top, bottom, float page</li>
+  <li>\centering 用来使插图居中</li>
+  <li>\caption 命令设置插图标题</li>
+</ul>
+
+<h2 id="tocAnchor-1-11-6">图片</h2>
+<p>推荐使用 graphicx包 ，提供的<code class="highlighter-rouge">\includegraphics{picname.jpg}</code></p>
+
+<p><code class="highlighter-rouge">\includegraphics[width = .8\textwidth]{a.jpg}</code> 宽度至页面宽度0.8，高度按比例</p>
+
+<h2 id="tocAnchor-1-11-7">公式</h2>
+
+<p>
+  <a href="https://zh.wikipedia.org/wiki/Help:%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F">wiki</a>
+</p>
+
+<p>使用 amssymb 或amsmath</p>
+
+<h3 id="格式">格式</h3>
+<ul>
+  <li>行内 <code class="highlighter-rouge">$ ... $ 或 \(...\) 或 \begin{math} ... \end{math}，</code></li>
+  <li>行间
+    <ul>
+      <li>不自动编号 <code class="highlighter-rouge">\[ ... \]</code></li>
+      <li>手动编号   <code class="highlighter-rouge">$$ ... \eqno{(1)}$$</code></li>
+      <li>自动编号   <code class="highlighter-rouge">\begin{equation} ... \end{equation}</code></li>
+    </ul>
+  </li>
+  <li>split 长公式只一个标号，需嵌入在equation环境中</li>
+  <li>eqnarray 用于多行的独立公式，
+    <ul>
+      <li>每行自动编号，</li>
+      <li>行前加nonumber 临时取消此行编号。</li>
+      <li>eqnarray*环境 不编号</li>
+    </ul>
+  </li>
+  <li>重设编号计数 下面+1 /setcounter{equation}{数}</li>
+  <li>align 环境 可使几组公式并排在一起，即在同一行显示多个公式 类似的有 gather环境</li>
+</ul>
+
+<h3 id="公式元素">公式元素</h3>
+<ul>
+  <li>上标 ^ 下标 _</li>
+  <li>根号 \sqrt{.} 分数线 \frac{.}{.}</li>
+  <li>运算符<code class="highlighter-rouge">\pm \times \div \cdot \cap \cup \geq \leq \neq \approx \equiv</code></li>
+  <li>连加、连乘、极限、积分等大型运算符分别用 <code class="highlighter-rouge">\sum, \prod, \lim, \int</code>在行内公式中它们可能会被压缩，可使用<code class="highlighter-rouge">\limits 和 \nolimits</code>来指定是否压缩 <code class="highlighter-rouge">$ \sum\limits _{i=1}^n i\quad \prod\limits _{i=1}^n $</code></li>
+  <li>多重积分可以使用 \iint, \iiint, \iiiint, \idotsint 等命令输入。</li>
+  <li>各种括号用<code class="highlighter-rouge">(), [], \{\}, \langle\rangle</code>等命令表示。amsmath宏包推荐使用<code class="highlighter-rouge">\big, \Big, \bigg, \Bigg</code>放在上述括号前面调整大小</li>
+  <li>省略号用 <code class="highlighter-rouge">\dots, \cdots, \vdots, \ddots</code> 等命令表示</li>
+  <li>amsmath 的 <code class="highlighter-rouge">pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix</code> 等环境可以在矩阵两边加上各种分隔符。</li>
+  <li>smallmatrix 环境，可以生成行内公式的小矩阵</li>
+</ul>
+
+<h3 id="公式举例">公式举例</h3>
+<div class="language-latex highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="p">\[</span><span class="nb">   
+</span><span class="nv">\left</span><span class="nb">|</span><span class="nv">\begin</span><span class="p">{</span><span class="nb">array</span><span class="p">}{</span><span class="nb">cccc</span><span class="p">}</span><span class="nb">   
+    </span><span class="m">1</span><span class="nb"> </span><span class="p">&amp;</span><span class="nb">    </span><span class="m">6</span><span class="nb">    </span><span class="p">&amp;</span><span class="nb"> </span><span class="m">9</span><span class="nb"> </span><span class="nv">\\</span><span class="nb">   
+    </span><span class="m">7</span><span class="nb"> </span><span class="p">&amp;</span><span class="nb">    </span><span class="m">90</span><span class="nb">   </span><span class="p">&amp;</span><span class="nb"> f</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nv">\\</span><span class="nb">   
+    </span><span class="m">9</span><span class="nb"> </span><span class="p">&amp;</span><span class="nb"> </span><span class="nv">\psi</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb"> </span><span class="p">&amp;</span><span class="nb"> g</span><span class="o">(</span><span class="nb">x</span><span class="o">)</span><span class="nb">   
+</span><span class="nv">\end</span><span class="p">{</span><span class="nb">array</span><span class="p">}</span><span class="nv">\right</span><span class="nb">|   
+</span><span class="p">\]</span>
+
+<span class="p">\[</span><span class="nb">   
+q</span><span class="o">(</span><span class="nb">x,t</span><span class="o">)=</span><span class="nb">   
+</span><span class="nv">\begin</span><span class="p">{</span><span class="nb">cases</span><span class="p">}</span><span class="o">(</span><span class="nb">t</span><span class="o">-</span><span class="nb">k</span><span class="o">+</span><span class="m">1</span><span class="o">)</span><span class="nb">x</span><span class="p">^</span><span class="m">2</span><span class="nb">,</span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\ \ </span><span class="p">&amp;</span><span class="nb">   
+  t</span><span class="nv">\in\big</span><span class="o">(</span><span class="nb">k</span><span class="o">-</span><span class="m">1</span><span class="nb">,k</span><span class="o">-</span><span class="nv">\dfrac</span><span class="p">{</span><span class="m">1</span><span class="p">}{</span><span class="m">2</span><span class="p">}</span><span class="nv">\big</span><span class="o">]</span><span class="nb">,</span><span class="nv">\\</span><span class="nb">   
+  </span><span class="o">(</span><span class="nb">k</span><span class="o">-</span><span class="nb">t</span><span class="o">)</span><span class="nb">x</span><span class="p">^</span><span class="m">2</span><span class="nb">, </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\ \ </span><span class="p">&amp;</span><span class="nb"> t</span><span class="nv">\in\big</span><span class="o">(</span><span class="nb">k</span><span class="o">-</span><span class="nv">\dfrac</span><span class="p">{</span><span class="m">1</span><span class="p">}{</span><span class="m">2</span><span class="p">}</span><span class="nb">,k</span><span class="nv">\big</span><span class="o">]</span><span class="nb">,   
+</span><span class="nv">\end</span><span class="p">{</span><span class="nb">cases</span><span class="p">}</span><span class="nb">   
+</span><span class="p">\]</span> 
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-11-8">其他</h2>
+<ul>
+  <li>注释符号  %</li>
+  <li>水平黑线  \rule[raise-height]{width}{thickness}  : \rule[0.6mm]{80pt}{0.15cm}
+    <ul>
+      <li>raise-height specifies how high to raise the rule (optional)</li>
+      <li>width specifies the length of the rule (mandatory)</li>
+      <li>thickness specifies the thickness of the rule (mandatory)</li>
+    </ul>
+  </li>
+  <li>\vspace[*]{length} command adds vertical space</li>
+  <li>单位 in英寸、 cm厘米、mm毫米、pt点1/72英寸、pc皮卡1/72英寸
+    <ul>
+      <li>汉字四号 14pt 三号 15.75pt 一号 28pt 五号 10.5pt</li>
+    </ul>
+  </li>
+  <li>mac目录树</li>
+</ul>
+
+<p>mactex2016</p>
+
+<ul>
+  <li>-bin 下面是平台 只留x86_64-darwin即可</li>
+  <li>-texmf-dist</li>
+</ul>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#CSE-ref">
+    		CSE <span>15</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#Latex-ref">Latex <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/dnsmasq%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE" title="dnsmasq基本设置">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/mysql" title="mysql">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

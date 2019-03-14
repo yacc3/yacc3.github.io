@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>watchman</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>watchman </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-03-01 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">安装配置</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">命令</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-3">
+              <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">Expression</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-4">
+              <a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">举例</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>facebook 开源的文件系统监测工具 <a href="https://facebook.github.io/watchman/">watchman</a></p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">安装配置</h1>
+
+<p>调整系统允许检测文件数</p>
+
+<ul>
+  <li>sudo sysctl -w kern.maxfiles=10485760</li>
+  <li>sudo sysctl -w kern.maxfilesperproc=1048576</li>
+</ul>
+
+<p>编辑/etc/sysctl.conf输入</p>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>kern.maxfiles=10485760
+kern.maxfilesperproc=1048576
+</code>
+    </pre>
+  </div>
+</div>
+
+<h1 id="tocAnchor-1-2">命令</h1>
+
+<ul>
+  <li>watch
+    <ul>
+      <li><code class="highlighter-rouge">watchman watch /&lt;path&gt;</code> CLI安装watch</li>
+      <li><code class="highlighter-rouge">watchman watch -j &lt; watch.json</code> 使用json配置文件安装watch</li>
+      <li><code class="highlighter-rouge">watchman watch-del &lt;watch-path&gt;</code></li>
+      <li><code class="highlighter-rouge">watchman watch-del-all</code></li>
+      <li><code class="highlighter-rouge">watchman watch-list</code></li>
+    </ul>
+  </li>
+  <li>trigger
+    <ul>
+      <li><code class="highlighter-rouge">watchman -- trigger /path &lt;triggername&gt; [exp] -- [command]</code></li>
+      <li><code class="highlighter-rouge">watchman -j &lt; trigger.json</code></li>
+      <li><code class="highlighter-rouge">watchman trigger-del  /&lt;path&gt; triggername</code> 删除trigger</li>
+      <li><code class="highlighter-rouge">watchman trigger-list /&lt;path&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="tocAnchor-1-3">Expression</h1>
+
+<ul>
+  <li>allof，逻辑与
+    <ul>
+      <li><code class="highlighter-rouge">["allof", [expr1], [expr2], ... [exprN]]</code> 所有exp都要为成立</li>
+    </ul>
+  </li>
+  <li>amyof，逻辑或
+    <ul>
+      <li><code class="highlighter-rouge">["anyof", [expr1], [expr2], ... [exprN]]</code> 一个成立即可</li>
+    </ul>
+  </li>
+  <li>dirname &amp; idirname，匹配文件的路径部分
+    <ul>
+      <li><code class="highlighter-rouge">["dirname", &lt;path&gt;] 或 ["dirname", &lt;path&gt;, ["depth", "ge", 0]]</code> 变动文件必须位于&lt;path&gt;，或任何子文件中</li>
+      <li><code class="highlighter-rouge">["dirname", /&lt;path&gt;, ["depth", "eq", 2]]</code> 变动文件必须位于&lt;path&gt;的grand-child</li>
+    </ul>
+  </li>
+  <li>match &amp; imatch，默认basename，可修改为wholename
+    <ul>
+      <li><code class="highlighter-rouge">["match", "*.txt", "basename"]</code></li>
+      <li><code class="highlighter-rouge">["match", "&lt;path&gt;/*.txt", "wholename"]</code></li>
+      <li><code class="highlighter-rouge">["match", "*.txt", "basename", {"includedotfiles": true}]</code> 默认是不包含.文件</li>
+    </ul>
+  </li>
+  <li>name &amp; iname，默认basename，可修改为wholename。完全匹配，不能使用通配符，但可以多候选
+    <ul>
+      <li><code class="highlighter-rouge">["name", "Makefile"]</code></li>
+      <li><code class="highlighter-rouge">["name", ["foo.txt", "Makefile"]]</code> 匹配多个，或</li>
+      <li><code class="highlighter-rouge">["name", ["path/to/one", "path/to/two"], "wholename"]</code></li>
+    </ul>
+  </li>
+  <li>empty，文件必须存在 &amp; （必须大小为0或者是目录）
+    <ul>
+      <li><code class="highlighter-rouge">"empty"</code> 或 <code class="highlighter-rouge">["empty"]</code></li>
+    </ul>
+  </li>
+  <li>exists，true if the file exists
+    <ul>
+      <li><code class="highlighter-rouge">"exists"</code> 或 <code class="highlighter-rouge">["exists"]</code></li>
+    </ul>
+  </li>
+  <li>not，取反</li>
+  <li>pcre &amp; ipcre，对文件名默认basename，可修改为wholename，使用perl正则表达式匹配
+    <ul>
+      <li><code class="highlighter-rouge">["pcre", "txt"]</code></li>
+      <li><code class="highlighter-rouge">["pcre", "\\.(js|css|c|cpp)$"],</code></li>
+    </ul>
+  </li>
+  <li>since</li>
+  <li>suffix，匹配文件后缀，不区分大小写
+    <ul>
+      <li><code class="highlighter-rouge">["suffix", "php"]</code></li>
+    </ul>
+  </li>
+  <li>type，文件类型匹配
+    <ul>
+      <li><code class="highlighter-rouge">["type", "f"]</code></li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th>type</th>
+          <th>meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>b</td>
+          <td>block special file</td>
+        </tr>
+        <tr>
+          <td>c</td>
+          <td>character special file</td>
+        </tr>
+        <tr>
+          <td>d</td>
+          <td>directory</td>
+        </tr>
+        <tr>
+          <td>f</td>
+          <td>regular file</td>
+        </tr>
+        <tr>
+          <td>p</td>
+          <td>named pipe (fifo)</td>
+        </tr>
+        <tr>
+          <td>l</td>
+          <td>symbolic link</td>
+        </tr>
+        <tr>
+          <td>s</td>
+          <td>socket</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>Solaris Door</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>size
+  [“size”, “gt”, 0]，按byte算</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>op</th>
+          <th> </th>
+          <th>meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>eq</td>
+          <td>Equal</td>
+          <td>true if file exists and size == operand</td>
+        </tr>
+        <tr>
+          <td>ne</td>
+          <td>Not Equal</td>
+          <td>true if file exists and size != operand</td>
+        </tr>
+        <tr>
+          <td>gt</td>
+          <td>Greater Than</td>
+          <td>true if file exists and size &gt; operand</td>
+        </tr>
+        <tr>
+          <td>ge</td>
+          <td>Greater Than Or Equal</td>
+          <td>true if file exists and size &gt;= operand</td>
+        </tr>
+        <tr>
+          <td>lt</td>
+          <td>Less Than</td>
+          <td>true if file exists and size &lt; operand</td>
+        </tr>
+        <tr>
+          <td>le</td>
+          <td>Less Than Or Equal</td>
+          <td>true if file exists and size &lt;= operand</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h1 id="tocAnchor-1-4">举例</h1>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>cmd:  watchman -- trigger ~/www jsfiles '*.js' -- ls -l
+json: ["trigger", "/home/wez/www", "jsfiles", "*.js", "--", "ls", "-l"]
+
+watchman watch ~/Code/yaccai.github.io/_posts
+watchman watch -j &lt; watch.json # 以下为json内容
+["roots","/Users/C/Code/yaccai.github.io/_posts"]
+
+watchman -- trigger  ~/Code/yaccai.github.io/_posts build '20*.md' -- /usr/local/bin/jekyll build -I -q --source /Users/C/Code/yaccai.github.io --destination /Users/C/Code/yaccai.github.io/_site
+</code>
+    </pre>
+  </div>
+</div>
+
+<div class="language-json highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>
+        <span class="p">{</span>
+        <span class="w">
+    </span>
+        <span class="s2">"version"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="s2">"4.7.0"</span>
+        <span class="p">,</span>
+        <span class="w">
+    </span>
+        <span class="s2">"triggers"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="p">[</span>
+        <span class="w">
+        </span>
+        <span class="p">{</span>
+        <span class="w">
+            </span>
+        <span class="s2">"name"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="s2">"build"</span>
+        <span class="p">,</span>
+        <span class="w">
+            </span>
+        <span class="s2">"append_files"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="kc">true</span>
+        <span class="p">,</span>
+        <span class="w">
+            </span>
+        <span class="s2">"command"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="p">[</span>
+        <span class="w">
+                </span>
+        <span class="s2">"/usr/local/bin/jekyll"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"build"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"-I"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"-q"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"--source"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"/Users/C/Code/yaccai.github.io"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"--destination"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"/Users/C/Code/yaccai.github.io/_site"</span>
+        <span class="w">
+            </span>
+        <span class="p">],</span>
+        <span class="w">
+            </span>
+        <span class="s2">"stdin"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="p">[</span>
+        <span class="w">
+                </span>
+        <span class="s2">"name"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"exists"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"new"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"size"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="s2">"mode"</span>
+        <span class="w">
+            </span>
+        <span class="p">],</span>
+        <span class="w">
+            </span>
+        <span class="s2">"expression"</span>
+        <span class="p">:</span>
+        <span class="w"> </span>
+        <span class="p">[</span>
+        <span class="w">
+                </span>
+        <span class="s2">"anyof"</span>
+        <span class="p">,</span>
+        <span class="w">
+                </span>
+        <span class="p">[</span>
+        <span class="w">
+                    </span>
+        <span class="s2">"match"</span>
+        <span class="p">,</span>
+        <span class="w">
+                    </span>
+        <span class="s2">"20*.md"</span>
+        <span class="p">,</span>
+        <span class="w">
+                    </span>
+        <span class="s2">"wholename"</span>
+        <span class="w">
+                </span>
+        <span class="p">]</span>
+        <span class="w">
+            </span>
+        <span class="p">]</span>
+        <span class="w">
+        </span>
+        <span class="p">}</span>
+        <span class="w">
+    </span>
+        <span class="p">]</span>
+        <span class="w">
+</span>
+        <span class="p">}</span>
+        <span class="w">
+</span>
+      </code>
+    </pre>
+  </div>
+</div>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#使用配置-ref">
+    		使用配置 <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#watchman-ref">watchman <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/find%E7%AE%80%E4%BB%8B" title="find简介">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/%E4%BD%BF%E7%94%A8launchd%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccmd" title="使用launchd实现自动执行cmd">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

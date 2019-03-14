@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>aria2</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>aria2 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2014-10-12 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">命令</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>aria2 简单使用，<a href="https://aria2.github.io/manual/en/html/aria2c.html">参考</a></p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">命令</h1>
+
+<p>
+  <code class="highlighter-rouge">aria2c [options] [URL | MAGNET | TORRENT]</code>
+</p>
+
+<ul>
+  <li><code class="highlighter-rouge">-j&lt;N&gt;, --max-concurrent-downloads=&lt;N&gt;</code>限制最大并行下载数。比如某下载索引文件包含如下，则在本参数大于等于2时，才能同时下载两处的文件。
+  http://example.com/foo.dmg<br />
+  http://example.com/bar.dmg。</li>
+  <li><code class="highlighter-rouge">-x&lt;N&gt;, --max-connection-per-server=&lt;N&gt;</code> The maximum number of connections to one server for each download.每个下载对每个服务器发出的连接数、</li>
+  <li><code class="highlighter-rouge">-s&lt;N&gt;, --split=&lt;N&gt;</code> Download  a  file using N connections，通常下载文件时，都只有一个host，而这个参数是指，将同一个文件分割，然后从不同的host下载，所以对于普通的下载，没有多大用处</li>
+  <li><code class="highlighter-rouge">-o&lt;FILE&gt;, --out=&lt;FILE&gt;</code> 输出文件名</li>
+</ul>
+
+<p>
+  <code class="highlighter-rouge">aria2c -x10 http://host/image.iso</code>
+</p>
+
+<p><code class="highlighter-rouge">aria2c -s2 http://host/image.iso http://mirror1/image.iso http://mirror2/image.iso</code>同时使用两个连接下载同一文件</p>
+
+<p><code class="highlighter-rouge">aria2c -x2 http://host/image.iso</code>用每个 host 两个连接从一个 host 下载一个文件</p>
+
+
+    </div>
+
+    <hr>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#下载-ref">下载 <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/vim%E5%BF%AB%E6%8D%B7%E9%94%AE" title="vim快捷键">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/dnsmasq%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE" title="dnsmasq基本设置">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

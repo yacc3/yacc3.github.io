@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>POSIX信号</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>POSIX信号 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2014-03-02 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">C 标准信号</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">BSD 信号</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>主要是BSD信号</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">C 标准信号</h1>
+
+<p>C标准定义了6个信号 在signal.h中</p>
+
+<ul>
+  <li>SIGABRT 异常中止。</li>
+  <li>SIGFPE 浮点异常。</li>
+  <li>SIGILL 无效指令。</li>
+  <li>SIGINT 交互的用户按键请求，默认情况下，这会导致进程终止。</li>
+  <li>SIGSEGV 无效内存访问。</li>
+  <li>SIGTERM 程序的中止请求</li>
+</ul>
+
+<p>在signal.h中还可能有其他的信号定义，但不属于C标准的一部分</p>
+
+<h1 id="tocAnchor-1-2">BSD 信号</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Num</th>
+      <th>Name</th>
+      <th>Default Action</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>SIGHUP</td>
+      <td>terminate process</td>
+      <td>terminal line hangup</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SIGINT</td>
+      <td>terminate process</td>
+      <td>Ctrl + C</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>SIGQUIT</td>
+      <td>create core image</td>
+      <td>Ctrl + D</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>SIGILL</td>
+      <td>create core image</td>
+      <td>illegal instruction</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>SIGTRAP</td>
+      <td>create core image</td>
+      <td>trace trap</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>SIGABRT</td>
+      <td>create core image</td>
+      <td>abort program (formerly SIGIOT)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>SIGEMT</td>
+      <td>create core image</td>
+      <td>emulate instruction executed</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>SIGFPE</td>
+      <td>create core image</td>
+      <td>floating-point exception 除0</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>SIGKILL</td>
+      <td>terminate process</td>
+      <td>kill program</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>SIGBUS</td>
+      <td>create core image</td>
+      <td>bus error</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>SIGSEGV</td>
+      <td>create core image</td>
+      <td>segmentation violation</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>SIGSYS</td>
+      <td>create core image</td>
+      <td>non-existent system call invoked</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>SIGPIPE</td>
+      <td>terminate process</td>
+      <td>write on a pipe with no reader</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>SIGALRM</td>
+      <td>terminate process</td>
+      <td>real-time timer expired</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>SIGTERM</td>
+      <td>terminate process</td>
+      <td>software termination signal</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>SIGURG</td>
+      <td>discard signal</td>
+      <td>urgent condition present on socket</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>SIGSTOP</td>
+      <td>stop process</td>
+      <td>stop (cannot be caught or ignored)</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>SIGTSTP</td>
+      <td>stop process</td>
+      <td>stop signal generated from keyboard</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>SIGCONT</td>
+      <td>discard signal</td>
+      <td>continue after stop</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>SIGCHLD</td>
+      <td>discard signal</td>
+      <td>child status has changed</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>SIGTTIN</td>
+      <td>stop process</td>
+      <td>background read attempted from control terminal</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>SIGTTOU</td>
+      <td>stop process</td>
+      <td>background write attempted to control terminal</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>SIGIO</td>
+      <td>discard signal</td>
+      <td>I/O is possible on a descriptor (see fcntl(2))</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>SIGXCPU</td>
+      <td>terminate process</td>
+      <td>cpu time limit exceeded (see setrlimit(2))</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>SIGXFSZ</td>
+      <td>terminate process</td>
+      <td>file size limit exceeded (see setrlimit(2))</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>SIGVTALRM</td>
+      <td>terminate process</td>
+      <td>virtual time alarm (see setitimer(2))</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>SIGPROF</td>
+      <td>terminate process</td>
+      <td>profiling timer alarm (see setitimer(2))</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>SIGWINCH</td>
+      <td>discard signal</td>
+      <td>Window size change</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>SIGINFO</td>
+      <td>discard signal</td>
+      <td>status request from keyboard</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>SIGUSR1</td>
+      <td>terminate process</td>
+      <td>User defined signal 1</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>SIGUSR2</td>
+      <td>terminate process</td>
+      <td>User defined signal 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>terminate，终止进程
+discard，忽略
+coredump，内核映像转储
+stop，停止进程</p>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#CSE-ref">
+    		CSE <span>15</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#UNIX-ref">UNIX <span>1</span> </a></li>
+     
+    	<li><a href="/tags#Linux-ref">Linux <span>2</span> </a></li>
+     
+    	<li><a href="/tags#POSIX-ref">POSIX <span>1</span> </a></li>
+     
+    	<li><a href="/tags#信号-ref">信号 <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev disabled"><a>前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/Mac_Concurrency" title="Mac_Concurrency">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

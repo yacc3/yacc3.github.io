@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>git_tips</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>git_tips </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-02-12 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">常用操作</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">回滚</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-3">
+              <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">.gitignore文件配置</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-4">
+              <a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">配置服务器</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>.gitignore 配置文件用于配置不需要加入版本管理的文件</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">常用操作</h1>
+
+<ul>
+  <li>clone之后，创建其他分支并切换 <code class="highlighter-rouge">git checkout -t origin/&lt;remote-name&gt;</code></li>
+  <li>查看分支状况: <code class="highlighter-rouge">git branch -a    红色的是远程分支</code></li>
+</ul>
+
+<h1 id="tocAnchor-1-2">回滚</h1>
+
+<ul>
+  <li>本地回滚 <code class="highlighter-rouge">git reset --hard commit-hash</code></li>
+  <li>远程回滚
+    <ul>
+      <li><code class="highlighter-rouge">git checkout the_branch</code></li>
+      <li><code class="highlighter-rouge">git pull</code></li>
+      <li><code class="highlighter-rouge">git branch the_branch_backup</code>        //备份一下这个分支当前的情况</li>
+      <li><code class="highlighter-rouge">git reset --hard the_commit_id</code>      //把the_branch本地回滚到commit-hash</li>
+      <li><code class="highlighter-rouge">git push origin :the_branch</code>         //删除远程 the_branch</li>
+      <li><code class="highlighter-rouge">git push origin the_branch</code>          //用回滚后的本地分支重新建立远程分支</li>
+      <li><code class="highlighter-rouge">git push origin :the_branch_backup</code>  //如果前面都成功了，删除这个备份分支</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="tocAnchor-1-3">.gitignore文件配置</h1>
+
+<ul>
+  <li>黑名单:…</li>
+  <li>
+    <p>白名单:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  *
+  !.gitignore
+  !*.cpp
+  !*.sh
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="tocAnchor-1-4">配置服务器</h1>
+
+<p>
+  <a href="http://toutiao.com/i6272114948822794753/?tt_from=sina&amp;utm_campain=client_share&amp;app=news_article&amp;utm_source=sinaweibo&amp;iid=3823220689&amp;utm_medium=toutiao_ios">服务器</a>
+</p>
+
+<ul>
+  <li>
+    <p>在本机上安装openssh<br />
+在linux client上安装ssh服务，如果是windows的安装git for windows <br />
+sudo apt-get install openssh-server<br />
+可以查看ssh服务是否开启: ps -e | grep ssh</p>
+  </li>
+  <li>在server上创建一个git用户: sudo adduser git</li>
+  <li>在server上安装git: sudo apt-get install git-core</li>
+  <li>
+    <p>在server上初始化仓库<br />
+cd /home/git/<br />
+git init –bare myRep.git</p>
+  </li>
+  <li>通过git clone命令进行克隆远程仓库<br />
+git clone git@{your server ip}:/home/git/myRep.git</li>
+</ul>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#使用配置-ref">
+    		使用配置 <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#git-ref">git <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/code%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE" title="code环境配置">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE" title="系统安装配置">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

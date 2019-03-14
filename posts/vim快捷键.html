@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>vim快捷键</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>vim快捷键 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2014-10-02 </span>
+    </div>
+    <div class="content">
+        <p>简单记录几个快捷键</p>
+
+<!-- more -->
+
+<p>插入文本</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>在cursor后append</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>在行末 append</td>
+    </tr>
+    <tr>
+      <td>i</td>
+      <td>在cursor位置insert</td>
+    </tr>
+    <tr>
+      <td>o</td>
+      <td>在cursor所在行，下面增加一行</td>
+    </tr>
+    <tr>
+      <td>O</td>
+      <td>在cursor所在行，上面增加一行</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>搜索</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>/search_text</td>
+      <td>在 后面 部分搜索search_text</td>
+    </tr>
+    <tr>
+      <td>?search_text</td>
+      <td>在 前面 部分搜索search_text</td>
+    </tr>
+    <tr>
+      <td>%s/str/STR</td>
+      <td>将str替换为STR，只替换第一个</td>
+    </tr>
+    <tr>
+      <td>%s/str/STR/g</td>
+      <td>将str替换为STR，替换所有</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>删除</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>x</td>
+      <td>删除 cursor所在位置字符</td>
+    </tr>
+    <tr>
+      <td>d0</td>
+      <td>删除 从cursor到 行首</td>
+    </tr>
+    <tr>
+      <td>d)</td>
+      <td>删除 从cursor到 句末 下一个\n</td>
+    </tr>
+    <tr>
+      <td>d$</td>
+      <td>删除 从cursor到 行末</td>
+    </tr>
+    <tr>
+      <td>dd</td>
+      <td>删除 整行</td>
+    </tr>
+    <tr>
+      <td>dgg</td>
+      <td>删除 从cursor到 文件开头</td>
+    </tr>
+    <tr>
+      <td>dG</td>
+      <td>删除 从cursor到 文件末尾</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>复制</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>yy</td>
+      <td>复制当前行</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>将已copy内容paste到 cursor下一行</td>
+    </tr>
+    <tr>
+      <td>P</td>
+      <td>将已copy内容paste到 cursor上一行</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>other</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>u</td>
+      <td>undo</td>
+    </tr>
+    <tr>
+      <td>^r</td>
+      <td>redo</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#使用配置-ref">
+    		使用配置 <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#vim-ref">vim <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/Mac%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE" title="Mac视频播放">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/aria2" title="aria2">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

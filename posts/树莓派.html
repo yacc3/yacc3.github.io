@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>树莓派</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>树莓派 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-03-14 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">网络配置</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-2">
+                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">vnc</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">samba</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-4">
+                  <a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">ftp</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-1-4"><span class="tocnumber">1.4</span> <span class="toctext">sshfs</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-6">
+              <a href="#tocAnchor-1-6"><span class="tocnumber">2</span> <span class="toctext">一些配置</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-7">
+                  <a href="#tocAnchor-1-6-1"><span class="tocnumber">2.1</span> <span class="toctext">开机免密码登录</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-8">
+                  <a href="#tocAnchor-1-6-2"><span class="tocnumber">2.2</span> <span class="toctext">apt-get</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-9">
+                  <a href="#tocAnchor-1-6-3"><span class="tocnumber">2.3</span> <span class="toctext">中文设置</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-10">
+                  <a href="#tocAnchor-1-6-4"><span class="tocnumber">2.4</span> <span class="toctext">自动执行</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-11">
+                  <a href="#tocAnchor-1-6-5"><span class="tocnumber">2.5</span> <span class="toctext">指示灯</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>tips</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">网络配置</h1>
+
+<ul>
+  <li>域名，编辑/etc/resolv.conf
+    <ul>
+      <li>nameserver 114.114.114.114</li>
+    </ul>
+  </li>
+  <li>源，/etc/apt/sources.list，使用阿里云，修改为以下两行
+    <ul>
+      <li>deb http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</li>
+      <li>deb-src http://mirrors.aliyun.com/raspbian/raspbian/ wheezy main non-free contrib</li>
+    </ul>
+  </li>
+  <li>
+    <p>网卡，/etc/network/interfaces</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  iface wlan0 inet static  
+  wpa-ssid  SSID  
+  wpa-psk   Password  
+  address 192.168.1.200 # 设定的静态IP地址  
+  netmask 255.255.255.0 # 网络掩码  
+  gateway 192.168.1.1   # 网关  
+  network 192.168.1.1   # 网络地址  
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="tocAnchor-1-1-1">
+  <a href="http://shumeipai.nxez.com/2013/09/04/login-rpi-with-vnc.html?variant=zh-cn">vnc</a>
+</h2>
+
+<blockquote>
+  <p>sudo apt-get install tightvncserver<br />
+vncpasswd<br />
+tightvncserver :1</p>
+</blockquote>
+
+<h2 id="tocAnchor-1-1-2">samba</h2>
+<p>sudo apt-get install samba<br />
+sudo smbpasswd –a pi # 添加一个用户pi并为之设置连接smba的密码<br />
+配置文件  /etc/samba/smb.conf</p>
+
+<blockquote>
+  <p>[pi]  # 分享的目录名称
+path = /home/pi  #分享的目录路径
+writable = yes<br />
+valid users = pi #这个用户要用上面的方式添加访问密码<br />
+public = yes<br />
+available = yes<br />
+browseable = yes</p>
+</blockquote>
+
+<p>sudo service smbd restart # 重启动</p>
+
+<h2 id="tocAnchor-1-1-3">ftp</h2>
+<p>pgrep vsftpd<br />
+配置文件 /etc/vsftpd.conf<br />
+<a href="http://yuanbin.blog.51cto.com/363003/108262/">配置参考</a><br />
+默认配置就可用，可以更改：<br />
+    1. 匿名登录，anonymous_enable=YES <br />
+    2. 写允许，write_enable=YES<br />
+    3. 指定登陆目录，默认是用户主目录，local_root=/<br />
+    4. vsftpd服务文件在/etc/init.d/目录下可以restart等</p>
+
+<h2 id="tocAnchor-1-1-4">
+  <a href="https://style.com/osxfuse/osxfuse/wiki/SSHFS">sshfs</a>
+</h2>
+<p>例如 sshfs pi@192.168.2.6:/media/pi/D /Users/C/Documents/piHD</p>
+
+<h1 id="tocAnchor-1-6">一些配置</h1>
+
+<ul>
+  <li>raspi-config</li>
+  <li>sudo passwd [uname]</li>
+  <li>默认账户密码 pi:raspberry</li>
+  <li>usb-wifi和本地以太网存在某中数据包路由关系</li>
+</ul>
+
+<h2 id="tocAnchor-1-6-1">开机免密码登录</h2>
+
+<p>开机免密码登录pi修改/etc/inittab：</p>
+
+<ul>
+  <li>修改前   1:2345:respawn:/sbin/getty 115200 tty1</li>
+  <li>修改后   1:2345:respawn:/bin/login -f pi tty1 /dev/tty1 2&gt;&amp;1</li>
+</ul>
+
+<h2 id="tocAnchor-1-6-2">apt-get</h2>
+<ul>
+  <li>install  update  upgrade  remove</li>
+  <li>autoclean  删除你已经删掉的软件</li>
+  <li>dist-upgrade 更新整个系统到最新的发布版。</li>
+  <li>apt-cache search 或 aptiude search 软件包——查找软件库中的软件</li>
+  <li>dpkg -l 查看已经安装了哪些包</li>
+</ul>
+
+<p>exfat 支持  sudo apt-get install exfat-utils</p>
+
+<h2 id="tocAnchor-1-6-3">中文设置</h2>
+<blockquote>
+  <p>sudo apt-get install ttf-wqy-zenhei<br />
+sudo apt-get install scim-pinyin<br />
+sudo raspi-config<br />
+在change_locale中选择zh_CN.UTF-8 重启<br />
+不然字体都是方块乱码</p>
+</blockquote>
+
+<h2 id="tocAnchor-1-6-4">
+  <a href="http://www.tuicool.com/articles/euYJVr">自动执行</a>
+</h2>
+
+<ul>
+  <li>开机启动
+    <ul>
+      <li>/etc/rc.local  这是开机启动脚本，是root在执行</li>
+    </ul>
+  </li>
+  <li>登录启动
+    <ul>
+      <li>/etc/profile是每个用户登录前，都要执行的脚本，管理员级</li>
+      <li>用户登录时主目录下的.profile会执行</li>
+    </ul>
+  </li>
+  <li>启动shell，依次检查但只执行一个：
+    <ul>
+      <li>.bash_profile</li>
+      <li>.bash_login</li>
+      <li>.profile</li>
+    </ul>
+  </li>
+  <li>退出shell时 会自动执行.bash_logout</li>
+</ul>
+
+<h2 id="tocAnchor-1-6-5">指示灯</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">LED</th>
+      <th style="text-align: left">颜色</th>
+      <th style="text-align: left">功能</th>
+      <th style="text-align: left">正常状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">ACT</td>
+      <td style="text-align: left">绿色</td>
+      <td style="text-align: left">存储卡状态</td>
+      <td style="text-align: left">闪烁（SD卡正在活动）</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PWR</td>
+      <td style="text-align: left">红色</td>
+      <td style="text-align: left">电源状态</td>
+      <td style="text-align: left">不闪烁</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+    <hr>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#Linux-ref">Linux <span>2</span> </a></li>
+     
+    	<li><a href="/tags#树莓派-ref">树莓派 <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/AppleScript%E7%AE%80%E4%BB%8B" title="AppleScript简介">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/python_tips" title="python_tips">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

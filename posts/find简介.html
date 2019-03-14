@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>find简介</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>find简介 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2015-02-20 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">options</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">primaries</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-3">
+              <a href="#tocAnchor-1-3"><span class="tocnumber">3</span> <span class="toctext">operators</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-4">
+              <a href="#tocAnchor-1-4"><span class="tocnumber">4</span> <span class="toctext">举例</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-5">
+              <a href="#tocAnchor-1-5"><span class="tocnumber">5</span> <span class="toctext">参考</span></a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>find 简单使用</p>
+
+<div class="highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
+find [-H | -L | -P] [-EXdsx]  -f path [path ...][expression]
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>find 递归遍历directory tree 并在每一个路径上的文件计算 expression</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">options</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>op</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-E</td>
+      <td>使用扩展的 regular expressions</td>
+    </tr>
+    <tr>
+      <td>-H</td>
+      <td>对链接，读取指向的原始文件的信息，原文件不存在，就读取链接文件的信息</td>
+    </tr>
+    <tr>
+      <td>-L</td>
+      <td>类似上</td>
+    </tr>
+    <tr>
+      <td>-P</td>
+      <td>对链接，读取链接文件的信息</td>
+    </tr>
+    <tr>
+      <td>-X</td>
+      <td>安全兼容xargs：如果一个文件全名包含xargs的分隔符skip，display error</td>
+    </tr>
+    <tr>
+      <td>-x</td>
+      <td>同-xdev，禁止遍历进入不同设备</td>
+    </tr>
+    <tr>
+      <td>-d</td>
+      <td>同-depth，使用深度优先遍历</td>
+    </tr>
+    <tr>
+      <td>-s</td>
+      <td>对同一文件夹下的文件，按字母顺序遍历</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-2">primaries</h1>
+
+<p>primaries可以另接受一个数字参数（可以附带+-）</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>选项</th>
+      <th style="text-align: left">说明</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-Btime<br />-atime<br />-ctime<br />-mtime<br />    n[smhdw]</td>
+      <td style="text-align: left">find启动前，n个单位时间birth, access,change, modify 的文件。默认单位d。+表示大于，-表示小于</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-name  pattern</td>
+      <td style="text-align: left">文件名（不包含路径部分）匹配pattern，-iname pattern类似，但是大小写不敏感</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-path  pattern</td>
+      <td style="text-align: left">文件全名匹配pattern（使用通配符），-ipath pattern类似，但是大小写不敏感</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-regex pattern</td>
+      <td style="text-align: left">文件全名匹配pattern（使用正则匹配），-iregex pattern类似，但是大小写不敏感</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-depth    n</td>
+      <td style="text-align: left">在n层目录中遍历。不带参数n时意义不同，表示按深度搜索</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-maxdepth n</td>
+      <td style="text-align: left">遍历最多n层目录，find起始点下的文件层次为1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-mindepth n</td>
+      <td style="text-align: left">遍历最少n层目录</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-newer file</td>
+      <td style="text-align: left">true if 文件比指定的file更新</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-empty</td>
+      <td style="text-align: left">true if 文件或目录是空</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-size [+|-]n</td>
+      <td style="text-align: left">单位[ckMGTP]。-小于 +大于，没有表示严格等于（用处不大）。<br />GNU版 单位[cwbkMG]，单位是向上进位，所以-3M 不会匹配2100K的文件，3M匹配[2000, 3000)KB的文件，而BSD版本3M只精确匹配2000000Byte的文件。。。。？</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-type t</td>
+      <td style="text-align: left">true if 文件的类型是[bcdflps]</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-user uname</td>
+      <td style="text-align: left">true if 文件属于uname</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-print</td>
+      <td style="text-align: left">always true</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-delete</td>
+      <td style="text-align: left">always true</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>-exec  utility  [argument …]    ;</td>
+      <td style="text-align: left">执行命令. 分号可改为 {} +</td>
+      <td>一次性传所有参数</td>
+    </tr>
+    <tr>
+      <td>-perm mode</td>
+      <td style="text-align: left">前缀[-</td>
+      <td>+] -表示包含mode所有位。+表示包含mode某一位即可，无+-表示完全匹配</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-3">operators</h1>
+
+<p>（expression)，true if expression is true</p>
+<ul>
+  <li>!</li>
+  <li>-and</li>
+  <li>-or</li>
+</ul>
+
+<h1 id="tocAnchor-1-4">举例</h1>
+
+<ul>
+  <li><code class="highlighter-rouge">find / \! -name "*.c" -print</code></li>
+  <li><code class="highlighter-rouge">find / -newer ttt -user wnj -print</code></li>
+  <li><code class="highlighter-rouge">find / \! \( -newer ttt -user wnj \) -print</code></li>
+  <li><code class="highlighter-rouge">find / \( -newer ttt -or -user wnj \) -print</code></li>
+  <li><code class="highlighter-rouge">find / -newerct '1 minute ago' -print</code></li>
+  <li><code class="highlighter-rouge">find / -type f -exec echo {} \;</code></li>
+  <li><code class="highlighter-rouge">find -L /usr/ports/packages -type l -exec rm -- {} +</code></li>
+  <li><code class="highlighter-rouge">find /usr/src -name CVS -prune -o -depth +6 -print</code></li>
+  <li><code class="highlighter-rouge">find /usr/src -name CVS -prune -o -mindepth 7 -print</code></li>
+  <li><code class="highlighter-rouge">find /Volumes/Bak/Backup/com.tencent.xinWeChat  -regextype posix-egrep -regex '.*__[0-9]{14}.bak$'</code></li>
+</ul>
+
+<h1 id="tocAnchor-1-5">参考</h1>
+
+<ul>
+  <li><a href="https://www.freebsd.org/cgi/man.cgi?find(1)">FreeBSD find(1)</a></li>
+  <li><a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/find.html">Open Group find</a></li>
+</ul>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#使用配置-ref">
+    		使用配置 <span>19</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#find-ref">find <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE" title="系统安装配置">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/watchman" title="watchman">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

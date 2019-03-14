@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>yacc3 Blog</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        <div class="row-fluid">
+  
+        
+        <h11><a class="title" href="/posts/AppleScript%E7%AE%80%E4%BB%8B">AppleScript简介</a></h11>
+        <div class="post_at_index">
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tell application "Finder"
+    display dialog "Hello World"
+end tell
+</code></pre></div></div>
+
+<p>待学习 。。。</p>
+
+ 
+        <a href="/posts/AppleScript%E7%AE%80%E4%BB%8B" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-03-13</cite> <i class="icon-tag"></i>  <a href="tags#AppleScript-ref">AppleScript</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%92%8C%E7%BD%91%E5%85%B3">路由器和网关</a></h11>
+        <div class="post_at_index">
+            <p>BSD 路由器简介</p>
+
+ 
+        <a href="/posts/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%92%8C%E7%BD%91%E5%85%B3" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-03-02</cite> <i class="icon-tag"></i>  <a href="tags#路由器-ref">路由器</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/%E4%BD%BF%E7%94%A8launchd%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccmd">使用launchd实现自动执行cmd</a></h11>
+        <div class="post_at_index">
+            <p>自动执行的shell script，通常分为开机时启动，和登录时启动。下面主要说明如何通过launchd实现</p>
+
+<p>需要自动被调用的程序，必须包装成agent或daemon，才能提交给os使用。包装需要在一个xml格式的文件中完成，后缀为.plist。一个plist文件对应一个自动调用的程序，并且plist文件必须放在（或ln -sfv）到一些特定的目录中，最后由launchctl负责加载才算完成。</p>
+
+ 
+        <a href="/posts/%E4%BD%BF%E7%94%A8launchd%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Ccmd" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-03-02</cite> <i class="icon-tag"></i>  <a href="tags#Mac-ref">Mac</a>, <a href="tags#shell-ref">shell</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/watchman">watchman</a></h11>
+        <div class="post_at_index">
+            <p>facebook 开源的文件系统监测工具 <a href="https://facebook.github.io/watchman/">watchman</a></p>
+
+ 
+        <a href="/posts/watchman" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-03-01</cite> <i class="icon-tag"></i>  <a href="tags#watchman-ref">watchman</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/find%E7%AE%80%E4%BB%8B">find简介</a></h11>
+        <div class="post_at_index">
+            <p>find 简单使用</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find [-H | -L | -P] [-EXdsx] [-f path] path ... [expression]
+find [-H | -L | -P] [-EXdsx]  -f path [path ...][expression]
+</code></pre></div></div>
+
+<p>find 递归遍历directory tree 并在每一个路径上的文件计算 expression</p>
+
+ 
+        <a href="/posts/find%E7%AE%80%E4%BB%8B" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-02-20</cite> <i class="icon-tag"></i>  <a href="tags#find-ref">find</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE">系统安装配置</a></h11>
+        <div class="post_at_index">
+            <p>几个简单的配置，几乎算不上配置。。。</p>
+
+ 
+        <a href="/posts/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-02-19</cite> <i class="icon-tag"></i>  <a href="tags#系统安装-ref">系统安装</a>, <a href="tags#Windows10-ref">Windows10</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/git_tips">git_tips</a></h11>
+        <div class="post_at_index">
+            <p>.gitignore 配置文件用于配置不需要加入版本管理的文件</p>
+
+ 
+        <a href="/posts/git_tips" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-02-12</cite> <i class="icon-tag"></i>  <a href="tags#git-ref">git</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/code%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">code环境配置</a></h11>
+        <div class="post_at_index">
+            <p>几个简单的配置，几乎算不上配置。。。</p>
+
+ 
+        <a href="/posts/code%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-02-09</cite> <i class="icon-tag"></i>  <a href="tags#编辑器-ref">编辑器</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/stat%E7%AE%80%E4%BB%8B">stat简介</a></h11>
+        <div class="post_at_index">
+            <p>stat 简介</p>
+
+<p>stat 用于显示文件信息</p>
+
+ 
+        <a href="/posts/stat%E7%AE%80%E4%BB%8B" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-02-01</cite> <i class="icon-tag"></i>  <a href="tags#stat-ref">stat</a>, <a href="tags#shell-ref">shell</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+        
+        <h11><a class="title" href="/posts/MacAVFoundation">MacAVFoundation</a></h11>
+        <div class="post_at_index">
+            <p>汇集一些MacOS视频音频等方面的资料，主要是AVFoundatio</p>
+
+<p><a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/AVFoundationPG/Articles/00_Introduction.html#//apple_ref/doc/uid/TP40010188">参考 apple dev AVFoundation</a></p>
+
+ 
+        <a href="/posts/MacAVFoundation" rel="nofollow">阅读全文...</a>
+        </div>
+        <br/>
+        <div>
+          <cite>2015-01-12</cite> <i class="icon-tag"></i>  <a href="tags#MacOS-ref">MacOS</a>, <a href="tags#AVFoundation-ref">AVFoundation</a>
+       </div> 
+        <div style="clear: both;"></div>
+        <hr/>
+ 
+</div>
+
+
+<!-- Pagination links -->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+    
+        
+        <li>
+            <a href="/page3">&laquo;</a>
+        </li>
+        
+    
+  
+    
+        <li>
+            <a href="/">1</a>
+        </li>
+    
+      
+    
+        
+            <li>
+                <a href="/page2">2</a>
+            </li>
+        
+    
+        
+            <li>
+                <a href="/page3">3</a>
+            </li>
+        
+    
+        
+            <li class="active">
+                <a>4</a>
+            </li>
+        
+    
+        
+            <li>
+                <a href="/page5">5</a>
+            </li>
+        
+    
+  
+    
+        <li>
+            <a href="/page5">&raquo;</a>
+        </li>
+    
+    </ul>
+</nav>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

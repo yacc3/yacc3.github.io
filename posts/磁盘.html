@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>磁盘</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>磁盘 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2018-06-14 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">概念</span></a>
+            </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">MBR</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">启动代码</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-4">
+                  <a href="#tocAnchor-1-2-2"><span class="tocnumber">2.2</span> <span class="toctext">分区表</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-2-3"><span class="tocnumber">2.3</span> <span class="toctext">结束标志</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-6">
+              <a href="#tocAnchor-1-6"><span class="tocnumber">3</span> <span class="toctext">GPT</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-7">
+                  <a href="#tocAnchor-1-6-1"><span class="tocnumber">3.1</span> <span class="toctext">LBA0</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-8">
+                  <a href="#tocAnchor-1-6-2"><span class="tocnumber">3.2</span> <span class="toctext">分区表头 LBA1</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-9">
+                  <a href="#tocAnchor-1-6-3"><span class="tocnumber">3.3</span> <span class="toctext">分区表项 LBA2 –33</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>关于磁盘的几个概念</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">概念</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>LBA</th>
+      <th>一个磁盘逻辑扇区即512B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MBR</td>
+      <td>主引导记录  Master Boot Record 位于磁盘的LBA0，第一个扇区。</td>
+    </tr>
+    <tr>
+      <td>MBR分区表</td>
+      <td>记录每个分区的位置和大小， MBR里的分区表只能记录4个主分区。分区和卷是同义</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="tocAnchor-1-2">MBR</h1>
+
+<p>MBR磁盘第一个扇区(每一个扇区长512B)。MBR包含：</p>
+<ol>
+  <li>446B 的引导代码，有时候这部分也被称为主引导记录</li>
+  <li>64B 的分区表</li>
+  <li>2B 的结束代码 55AA</li>
+</ol>
+
+<p>
+  <img src="../img/MBR.png" alt="MBR" />
+</p>
+
+<p>MBR分区表下系统启动过程：</p>
+
+<ol>
+  <li>打开机器电源，BIOS自检，BIOS根据COMS里的设置选择启动磁盘</li>
+  <li>BIOS复制启动磁盘MBR到内存</li>
+  <li>MBR的引导代码指向DPT中标记为活动的分区里的分区引导记录PBR</li>
+  <li>PBR在分区中找到操作系统的引导程序</li>
+  <li>系统被引导</li>
+</ol>
+
+<p>在MBR类型分区表中，每个分区用16B去记录分区类型，起始扇区，总扇区数(4B)，最多有4个分区项</p>
+
+<h2 id="tocAnchor-1-2-1">启动代码</h2>
+
+<p>主要作用是检查分区表是否正确并且在系统硬件完成自检以后将控制权交给硬盘上的引导程序（如GNU GRUB）。</p>
+
+<p>它不依赖任何操作系统，而且启动代码也是可以改变的，从而能够实现多系统引导。</p>
+
+<h2 id="tocAnchor-1-2-2">分区表</h2>
+
+<p>硬盘分区表占据主引导扇区的64个字节（偏移01BEH–偏移01FDH），可以对四个分区的信息进行描述，其中每个分区的信息占据16个字节。比如某一分区在硬盘分区表的信息如下：
+<code class="highlighter-rouge">80 01 01 00 0B FE BF FC 3F 00 00 00 7E 86 BB 00</code></p>
+<ol>
+  <li>第一个字节表示是否激活，80表示活动分区，00表示非活动，其他数值无意义</li>
+  <li>接下来3个字节表示分区开始位置，”01 01 00” 表示分区开始的磁头号为1，开始的扇区号为1，开始的柱面号为0</li>
+  <li>接下来一个字节是文件系统类型，0B表示FAT32，其他的07表示NTFS</li>
+  <li>接下来表示分区结束位置，”3F 00 00 00”表示首扇区的相对扇区号为63；”7E 86 BB 00”表示总扇区数为12289662</li>
+</ol>
+
+<h2 id="tocAnchor-1-2-3">结束标志</h2>
+
+<p>最后两个字节是55，表示主引导记录有效</p>
+
+<h1 id="tocAnchor-1-6">GPT</h1>
+
+<p>GPT是指GUID Partition Table，是GUID类型磁盘使用的分区表</p>
+
+<p>
+  <img src="../img/GUID.svg" alt="GUID" />
+</p>
+
+<h2 id="tocAnchor-1-6-1">LBA0</h2>
+
+<p>GUID磁盘的第一个扇区LBA0保存着一个protect MBR，只包含着一个特殊分区类型和结束代码。当操作系统检查到这个 Protect MBR后是会直接忽略掉的。</p>
+
+<p>之所以叫保护MBR，是因为用来防止不支持GPT的硬盘管理工具错误识别并破坏硬盘中的数据。在这个MBR中LBA0个标识为0xEE的分区，以此来表示这块硬盘使用GPT分区表。</p>
+
+<p>在使用MBR/GPT混合分区表的硬盘中，这部分存储了GPT分区表的一部分分区（通常是前四个分区），可以使不支持从GPT启动的操作系统从这个MBR启动，启动后只能操作MBR分区表中的分区。如Boot Camp就是使用这种方式启动Windows。</p>
+
+<h2 id="tocAnchor-1-6-2">分区表头 LBA1</h2>
+
+<p>GUID磁盘的第二个扇区LBA1保存着GPT的头部，分区表头记录了</p>
+
+<ol>
+  <li>磁盘的可用空间，以及组成分区表的项(大小和数量)</li>
+  <li>磁盘的GUID，分区表头部本身的大小和位置(总在LBA1开始)，以及备份分区表头的位置大小</li>
+  <li>存储本身和分区表的CRC32校验，如果出错从备份恢复，如果备份也错误将不可用</li>
+</ol>
+
+<p>
+  <img src="../img/LBA1.png" alt="LBA1" />
+</p>
+
+<h2 id="tocAnchor-1-6-3">分区表项 LBA2 –33</h2>
+
+<p>
+  <img src="../img/GPT_it.png" alt="GPT_it" />
+</p>
+
+    </div>
+
+    <hr>
+
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#MBR-ref">MBR <span>1</span> </a></li>
+     
+    	<li><a href="/tags#GPT-ref">GPT <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/rsync" title="rsync">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/%E4%B8%89%E7%B3%BB%E7%BB%9F" title="三系统">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+

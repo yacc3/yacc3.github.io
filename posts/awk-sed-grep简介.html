@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <head>
+    <meta charset="utf-8">
+    <title>awk-sed-grep简介</title>
+    
+    <meta name="author" content="yacc3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/bootstrap.2.2.2.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tocLight.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [ ['$[',']$'] ]}
+    });
+  </script>
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">yacc3</a>
+          <ul class="nav">
+            <li><a href="/explore.html">Explore</a></li>
+            <li><a href="/categories.html">Category</a></li>
+            <li><a href="/tags.html">Tag</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+            <li><a href="/about.html">About</a></li>
+
+<!--             <li><a href="https://github.com/yaccai">Github</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h11>awk-sed-grep简介 </h11>
+</div>
+
+<div class="row-fluid post-full">
+  <div class="span12">
+
+
+    <div class="date">
+        <span>2016-03-04 </span>
+    </div>
+    <div class="content">
+        <div id="toc-container">
+  <table class="toc" id="toc">
+    <tbody>
+      <tr>
+        <td>
+          <div id="toctitle">
+            <h2>Contents</h2>
+          </div>
+          <ul>
+            <li class="toc_level-1 toc_section-1">
+              <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">语法</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-2">
+                  <a href="#tocAnchor-1-1-1"><span class="tocnumber">1.1</span> <span class="toctext">简单的</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-3">
+                  <a href="#tocAnchor-1-1-2"><span class="tocnumber">1.2</span> <span class="toctext">复杂的</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-4">
+                  <a href="#tocAnchor-1-1-3"><span class="tocnumber">1.3</span> <span class="toctext">其他</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-5">
+                  <a href="#tocAnchor-1-1-4"><span class="tocnumber">1.4</span> <span class="toctext">内建变量</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-6">
+                  <a href="#tocAnchor-1-1-5"><span class="tocnumber">1.5</span> <span class="toctext">匹配</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-7">
+                  <a href="#tocAnchor-1-1-6"><span class="tocnumber">1.6</span> <span class="toctext">举例</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-8">
+                  <a href="#tocAnchor-1-1-7"><span class="tocnumber">1.7</span> <span class="toctext">输出文件第十行</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-9">
+                  <a href="#tocAnchor-1-1-8"><span class="tocnumber">1.8</span> <span class="toctext">文件转置</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-10">
+                  <a href="#tocAnchor-1-1-9"><span class="tocnumber">1.9</span> <span class="toctext">有效电话号码</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-11">
+                  <a href="#tocAnchor-1-1-10"><span class="tocnumber">1.10</span> <span class="toctext">单词频率统计</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-12">
+              <a href="#tocAnchor-1-12"><span class="tocnumber">2</span> <span class="toctext">sed</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-13">
+                  <a href="#tocAnchor-1-12-1"><span class="tocnumber">2.1</span> <span class="toctext">Sed Commands</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-14">
+                  <a href="#tocAnchor-1-12-2"><span class="tocnumber">2.2</span> <span class="toctext">Sed Pattern Flags</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-15">
+                  <a href="#tocAnchor-1-12-3"><span class="tocnumber">2.3</span> <span class="toctext">sed reg</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-16">
+                  <a href="#tocAnchor-1-12-4"><span class="tocnumber">2.4</span> <span class="toctext">举例</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="toc_level-1 toc_section-17">
+              <a href="#tocAnchor-1-17"><span class="tocnumber">3</span> <span class="toctext">grep</span></a>
+              <ul>
+                <li class="toc_level-2 toc_section-18">
+                  <a href="#tocAnchor-1-17-1"><span class="tocnumber">3.1</span> <span class="toctext">零宽断言</span></a>
+                </li>
+                <li class="toc_level-2 toc_section-19">
+                  <a href="#tocAnchor-1-17-2"><span class="tocnumber">3.2</span> <span class="toctext">参考</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div><p>about AWK - sed - grep</p>
+
+<!-- more -->
+
+<h1 id="tocAnchor-1-1">语法</h1>
+
+<p><a href="http://www.gnu.org/software/gawk/manual/gawk.html">gawk</a>
+<a href="https://www.gnu.org/software/sed/manual/sed.html">sed</a>
+<a href="https://www.gnu.org/software/grep/manual/grep.html">grep</a></p>
+
+<p>awk 是对输入进行逐行分析的，模式一旦匹配成功，就执行后面相应的action. awk 是文本分析程序，虽然也有技巧可以使它做各种黑活，但是太tricky了，还不如来个python明白。</p>
+
+<p>sed is a stream editor. A stream editor is used to perform basic text transformations on an input stream (a file or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed’s ability to filter text in a pipeline which particularly distinguishes it from other types of editors.</p>
+
+<h2 id="tocAnchor-1-1-1">简单的</h2>
+
+<p>awk [-F] ‘pattern {action}’ file</p>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">awk</span> <span class="s1">'$3 &gt;0 { print $1, $2 * $3 }'</span> emp.data
+<span class="nb">cat</span> /etc/passwd <span class="se">\|</span> <span class="nb">awk</span>  <span class="nt">-F</span> <span class="s1">':'</span>  <span class="s1">'{print $1"\t"$7}'</span>
+<span class="nb">awk</span> <span class="s1">'$3==0 &amp;&amp; $6=="ESTABLE" \|\| NR==1 {printf "%02s %-20s %-20s\n",NR, $4,$5}'</span> n.txt
+<span class="nb">awk</span> <span class="s1">'$3==0 &amp;&amp; $6=="LISTEN" || NR==1 '</span> netstat.txt <span class="c"># 这个相当于过滤一条条记录</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<ul>
+  <li>-F 指定分割符，默认是空格，还可以指明多个比如 -F ‘[;:]’’</li>
+  <li>print 也可以改成完全C风格的printf</li>
+  <li>其中的“==”为比较运算符。其他比较运算符：!=, &gt;, &lt;, &gt;=, &lt;=</li>
+</ul>
+
+<h2 id="tocAnchor-1-1-2">复杂的</h2>
+
+<p>awk ‘ BEGIN {…} {…}; END{…} ‘</p>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">awk</span> <span class="nt">-F</span> <span class="s1">':'</span> <span class="s1">'BEGIN {count=0;} {name[count] = $1;count++;}; END{for (i = 0; i &lt; NR; i++) print i, name[i]}'</span> /etc/passwd
+<span class="nb">awk</span>  <span class="s1">'BEGIN{FS=":"} {print $1,$3,$6}'</span> /etc/passwd
+</code>
+    </pre>
+  </div>
+</div>
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="c">#!/bin/awk -f</span>
+<span class="c">#运行前</span>
+BEGIN <span class="o">{</span>
+    math <span class="o">=</span> 0
+    english <span class="o">=</span> 0
+    computer <span class="o">=</span> 0
+ 
+    <span class="nb">printf</span> <span class="s2">"NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"---------------------------------------------</span><span class="se">\n</span><span class="s2">"</span>
+<span class="o">}</span>
+<span class="c">#运行中</span>
+<span class="o">{</span>
+    math+<span class="o">=</span><span class="nv">$3</span>
+    english+<span class="o">=</span><span class="nv">$4</span>
+    computer+<span class="o">=</span><span class="nv">$5</span>
+    <span class="nb">printf</span> <span class="s2">"%-6s %-6s %4d %8d %8d %8d</span><span class="se">\n</span><span class="s2">"</span>, <span class="nv">$1</span>, <span class="nv">$2</span>, <span class="nv">$3</span>,<span class="nv">$4</span>,<span class="nv">$5</span>, <span class="nv">$3</span>+<span class="nv">$4</span>+<span class="nv">$5</span>
+<span class="o">}</span>
+<span class="c">#运行后</span>
+END <span class="o">{</span>
+    <span class="nb">printf</span> <span class="s2">"---------------------------------------------</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="nb">printf</span> <span class="s2">"  TOTAL:%10d %8d %8d </span><span class="se">\n</span><span class="s2">"</span>, math, english, computer
+    <span class="nb">printf</span> <span class="s2">"AVERAGE:%10.2f %8.2f %8.2f</span><span class="se">\n</span><span class="s2">"</span>, math/NR, english/NR, computer/NR
+<span class="o">}</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<ul>
+  <li>可以将awk写成一个文件执行，调用时使用-f来指定：awk -f cal.awk score.txt</li>
+</ul>
+
+<h2 id="tocAnchor-1-1-3">其他</h2>
+
+<p>还有条件控制等，实际上这几乎是一门编程语言。这里主要关注简单一些的状况</p>
+
+<h2 id="tocAnchor-1-1-4">内建变量</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$0</td>
+      <td>当前记录（这个变量中存放着整个行的内容）</td>
+    </tr>
+    <tr>
+      <td>$1~$n</td>
+      <td>当前记录的第n个字段，字段间由FS分隔</td>
+    </tr>
+    <tr>
+      <td>FS</td>
+      <td>输入字段分隔符 默认是空格或Tab</td>
+    </tr>
+    <tr>
+      <td>NF</td>
+      <td>当前记录中的字段个数，就是有多少列</td>
+    </tr>
+    <tr>
+      <td>NR</td>
+      <td>已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</td>
+    </tr>
+    <tr>
+      <td>FNR</td>
+      <td>当前记录数，与NR不同的是，这个值会是各个文件自己的行号</td>
+    </tr>
+    <tr>
+      <td>RS</td>
+      <td>输入的记录分隔符， 默认为换行符</td>
+    </tr>
+    <tr>
+      <td>OFS</td>
+      <td>输出字段分隔符， 默认也是空格</td>
+    </tr>
+    <tr>
+      <td>ORS</td>
+      <td>输出的记录分隔符，默认为换行符</td>
+    </tr>
+    <tr>
+      <td>FILENAME</td>
+      <td>当前输入文件的名字</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tocAnchor-1-1-5">匹配</h2>
+
+<p>可以在匹配部分使用grep类似的语法。模式以~开头，写在两个斜杠中间</p>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">awk</span> <span class="s1">'$6 ~ /FIN|TIME/ {print NR,$4,$5,$6}'</span> 
+</code>
+    </pre>
+  </div>
+</div>
+
+<p>表示第六个分量，如果是FIN或TIME就算做匹配成功</p>
+
+<h2 id="tocAnchor-1-1-6">举例</h2>
+
+<p>主要来自leetcode</p>
+
+<h2 id="tocAnchor-1-1-7">输出文件第十行</h2>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>gawk <span class="s1">'NR==10 {print $0}'</span> file.txt
+gawk <span class="s1">'NR==10'</span> file.txt
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-1-8">
+  <a href="https://leetcode.com/problems/transpose-file/">文件转置</a>
+</h2>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">awk</span> <span class="s1">' { 
+    for (i = 1; i &lt;= NF; i++)  {
+        a[NR, i] = $i
+    }
+}
+NF &gt; p { p = NF }
+END {    
+    for (j = 1; j &lt;= p; j++) {
+        str = a[1, j]
+        for (i = 2; i &lt;= NR; i++){
+            str = str " " a[i, j]
+        }
+        print str
+    }
+}'</span> file.txt
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-1-9">
+  <a href="https://leetcode.com/problems/valid-phone-numbers/">有效电话号码</a>
+</h2>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">awk</span>  <span class="s1">'$0 ~ /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/ || /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/ {print  $0}'</span> file.txt
+</code>
+    </pre>
+  </div>
+</div>
+
+<h2 id="tocAnchor-1-1-10">
+  <a href="https://leetcode.com/problems/word-frequency/">单词频率统计</a>
+</h2>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">awk</span> <span class="s1">'
+BEGIN{
+    while(getline &lt; "words.txt") {
+        for(i = 1; i &lt;= NF; i += 1)  map_wf[$i]++; 
+    }
+    n = asort(map_wf, arr_f); 
+    for(word in map_wf) {
+        map_fw[map_wf[word]] = word; 
+    }
+    for(j = n; j &gt;= 1; j -= 1) {
+        f = arr_f[j];
+        printf("%s %d\n", map_fw[f], f);
+    }
+}'</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<h1 id="tocAnchor-1-12">sed</h1>
+
+<p>sed是一个基于文本行的，“流”处理工具</p>
+
+<ol>
+  <li>读取一行到 pattern space</li>
+  <li>将sed script中的command到pattern space（sed 大概有25种command）</li>
+  <li>每处理完一行，通常pattern space输出。</li>
+  <li>接着处理一些end型command 比如d、q、N</li>
+  <li>重复1</li>
+</ol>
+
+<ul>
+  <li>其中的sed script可以来自command line 也可以是 -f选项来自sed文件</li>
+  <li>一个command 可以接受行号或reg作为address，也就是command执行的条件</li>
+  <li>hold space是另一个缓存空间，sed中只含以上两个空间</li>
+</ul>
+
+<p>每一个sed指令，都可以看做 pattern-action对，满足条件/pattern后，再action</p>
+
+<p>在sed script文件中首行：#!/bin/sed -f 可以直接执行sed</p>
+
+<h2 id="tocAnchor-1-12-1">Sed Commands</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">a text</code>, Append text after a line</li>
+  <li><code class="highlighter-rouge">c text</code>, replace lines with text</li>
+  <li><code class="highlighter-rouge">d</code>, delete PS</li>
+  <li><code class="highlighter-rouge">D</code>, if PS contains \n, delete PS to 1st \n,restart cycle without &lt; newline</li>
+  <li><code class="highlighter-rouge">e cmd</code>, PS &lt;= (exceute cmd-output)</li>
+  <li><code class="highlighter-rouge">F</code>, print input file name</li>
+  <li><code class="highlighter-rouge">g</code>, PS &lt;= HS</li>
+  <li><code class="highlighter-rouge">G</code>, PS += \n + HS</li>
+  <li><code class="highlighter-rouge">h</code>, HS &lt;= PS</li>
+  <li><code class="highlighter-rouge">H</code>, HS += \n + PS</li>
+  <li><code class="highlighter-rouge">i text</code>, insert text before a line</li>
+  <li><code class="highlighter-rouge">n</code>, if auto-print: print PS,replace PS with next line of input</li>
+  <li><code class="highlighter-rouge">N</code>, PS += \n + nextline</li>
+  <li><code class="highlighter-rouge">P</code>, print PS</li>
+  <li><code class="highlighter-rouge">p</code>, Print the PS, up to the 1st \n</li>
+  <li><code class="highlighter-rouge">q ecode</code>, exit</li>
+  <li><code class="highlighter-rouge">Q ecode</code>, exit without print PS</li>
+  <li><code class="highlighter-rouge">s/regexp/replacement/[flags]</code>, replacement</li>
+  <li><code class="highlighter-rouge">w filename</code>, write PS to filename</li>
+  <li><code class="highlighter-rouge">x</code>, exchange PS and HS</li>
+  <li><code class="highlighter-rouge">y/src/dst/</code>, translate any c in src to coresponding char in dst</li>
+  <li><code class="highlighter-rouge">z</code>, empty PS</li>
+  <li><code class="highlighter-rouge">=</code>, print input line number</li>
+</ul>
+
+<h2 id="tocAnchor-1-12-2">Sed Pattern Flags</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">/g - Global</code></li>
+  <li><code class="highlighter-rouge">/I - Ignore Case</code></li>
+  <li><code class="highlighter-rouge">/p - Print</code></li>
+  <li><code class="highlighter-rouge">/w - filename - Write Filename</code></li>
+</ul>
+
+<h2 id="tocAnchor-1-12-3">sed reg</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">^ </code></td>
+      <td>caret表示一行的开头。如：/^#/ 以#开头的匹配。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$ </code></td>
+      <td>dollarsign表示一行的结尾。如：/}$/ 以}结尾的匹配。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">\&lt;</code></td>
+      <td>表示词首。 如 &lt;abc 表示以 abc 为首的詞。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">\&gt;</code></td>
+      <td>表示词尾。 如 abc&gt; 表示以 abc 结尾的詞。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">. </code></td>
+      <td>表示任何单个字符。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">*</code></td>
+      <td>asterisk表示重复0次或多次。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">[ ]</code></td>
+      <td>字符集合。如：[abc]表示匹配a或b或c, [^a]表示非a的字符</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="tocAnchor-1-12-4">举例</h2>
+
+<h3 id="1">1</h3>
+
+<div class="language-zsh highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nv">$ </span><span class="nb">sed</span> <span class="s1">'s/&lt;.*&gt;//g'</span> html.txt                       <span class="c"># 错误</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="s1">'s/&lt;[^&gt;]*&gt;//g'</span> html.txt                    <span class="c"># 正确</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="s2">"3,6s/my/your/g"</span> pets.txt                  <span class="c"># 只替换第3到第6行的文本。</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="s1">'s/s/S/2'</span> my.txt                           <span class="c"># 只替换每一行的第二个s </span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="s1">'s/s/S/3g'</span> my.txt                          <span class="c"># 只替换第一行的第3个以后的s</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="s1">'1,3s/my/your/g; 3,$s/This/That/g'</span> my.txt  <span class="c"># 多个模式匹配</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'1,3s/my/your/g'</span> <span class="nt">-e</span> <span class="s1">'3,$s/This/That/g'</span> my.txt
+</code>
+    </pre>
+  </div>
+</div>
+
+<h3 id="2">2</h3>
+
+<p>
+  <code class="highlighter-rouge">$ sed '1!G;h;$!d' t.txt</code>
+</p>
+
+<ul>
+  <li>1!G 只有第一行不执行G命令，将换行符和hold space追加到pattern space</li>
+  <li>h   （每一行都）执行h命令，将pattern space中的内容拷贝到hold space中</li>
+  <li>$!d 除了最后一行不执行d命令，其它行都执行d命令，删除当前行</li>
+</ul>
+
+<h3 id="3">3</h3>
+<div class="language-zsh highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code>N        <span class="c"># add the next line to the pattern space; </span>
+s/<span class="se">\n</span> / / <span class="c"># find a new line followed by a space, replace with one space;</span>
+P        <span class="c"># print the top line of the pattern space;</span>
+D        <span class="c"># delete the top line from the pattern space and run the script again.</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<h3 id="4">4</h3>
+
+<p><a href="http://sed.sourceforge.net/grabbag/scripts/turing.sed">这里</a>是一个sed script</p>
+
+<p><a href="http://www.techsakh.com/2016/05/12/20160512use-sed-command-linux-unix/#How to run multiple sed commands">这里</a>是大量的sed举例</p>
+
+<h3 id="5">5</h3>
+
+<div class="language-bash highlighter-rouge">
+  <div class="highlight">
+    <pre class="highlight">
+      <code><span class="nb">cat</span> ~/passwd | <span class="nb">sed</span> <span class="nt">-n</span> <span class="s1">'/nobody/p'</span>
+</code>
+    </pre>
+  </div>
+</div>
+
+<h1 id="tocAnchor-1-17">grep</h1>
+
+<h2 id="tocAnchor-1-17-1">零宽断言</h2>
+
+<p>先行断言，表示匹配表达式前面的位置 (?=exp)</p>
+
+<p>后发断言，表示匹配表达式后面的位置 (?&lt;=exp)</p>
+
+<h2 id="tocAnchor-1-17-2">参考</h2>
+
+<ul>
+  <li><a href="http://www.grymoire.com/Unix/Sed.html">Introduction and Tutorial</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Sed">sed @ wiki</a></li>
+  <li><a href="https://www.gnu.org/software/sed/manual/sed.html#sed-commands-list">sed, a stream editor</a></li>
+</ul>
+
+    </div>
+
+    <hr>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories#CSE-ref">
+    		CSE <span>15</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags#awk-ref">awk <span>1</span> </a></li>
+     
+    	<li><a href="/tags#sed-ref">sed <span>1</span> </a></li>
+     
+    	<li><a href="/tags#grep-ref">grep <span>1</span> </a></li>
+    
+  
+
+
+
+    </ul>
+    
+
+
+    <nav aria-label="Page navigation">
+      
+      <ul class="pagination">
+      
+        <li class="prev"><a href="/posts/java%E6%80%BB%E7%BB%93" title="java总结">前一篇</a></li>
+      
+
+        <li><a href="">目录</a></li>
+        
+      
+        <li class="next"><a href="/posts/%E4%BD%BF%E7%94%A8googleDrive%E5%A4%87%E4%BB%BD%E9%85%8D%E7%BD%AE" title="使用googleDrive备份配置">后一篇</a></li>
+      
+      </ul>
+    </nav>
+
+
+<script type="text/javascript">
+    $(document).ready(
+        function expand() {
+            var node = $("h1")
+            for (var i = 0; i < node.length; i++) {
+                var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "    " + t.innerText
+            }
+
+            node = $("h2")
+            for (var i = 0; i < node.length; i++) {
+                  var t = node[i]
+                  var num = $("[href='#" + t.id + "']").children("span.tocnumber")
+                  t.innerText = num.text() + "   " + t.innerText
+            }
+
+            
+        }
+    );
+</script>
+    
+  </div>
+</div>
+
+      </div>
+      <hr/>
+      <center> <footer>
+        &copy; 2019 yacc3 with help from <a href="http://jekyllrb.com" target="_blank" title="The simple, blog-aware, static site generator.">Jekyll</a>. Hosted by <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub</a>.
+        <br><br>
+      </footer> </center>
+
+
+    </div>
+
+
+  </body>
+</html>
+
