@@ -63,113 +63,16 @@
         <hr/>
  
         
-        <h11><a class="title" href="/posts/%E4%B8%89%E7%B3%BB%E7%BB%9F">三系统</a></h11>
+        <h11><a class="title" href="/posts/%E4%B8%89%E7%B3%BB%E7%BB%9F">Mac三系统</a></h11>
         <div class="post_at_index">
-            <h1 id="关闭time-machine快照">关闭time machine快照</h1>
+            <p>在Mac上安装三系统</p>
 
-<p>清除 time machine的本地快照</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>tmutil disable <span class="c"># 关闭自动备份</span>
-tmutil thinlocalsnapshots / 9999999999999999
-
-tmutil listlocalsnapshotdates / | <span class="nb">sed</span> <span class="s2">"1d"</span> | <span class="k">while </span><span class="nb">read </span>it<span class="p">;</span> <span class="k">do
-    </span>tmutil deletelocalsnapshots <span class="s2">"</span><span class="nv">$it</span><span class="s2">"</span>
-<span class="k">done
-</span>tmutil listlocalsnapshots /
-</code></pre></div></div>
-
-<h1 id="磁盘划分">磁盘划分</h1>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gpt <span class="nt">-r</span> show /dev/disk0           <span class="c"># gpt状态</span>
-<span class="nb">sudo </span>fdisk /dev/disk0                 <span class="c"># 磁盘分区状况</span>
-
-<span class="nb">sudo </span>diskutil apfs resizeContainer disk0s2000 95G JHFS+ window 0 <span class="c"># 划出windows分区</span>
-<span class="nb">sudo </span>diskutil apfs resizeContainer disk0s2000 80G JHFS+ linux  0 <span class="c"># 划出linux分区</span>
-</code></pre></div></div>
-
-<h2 id="回收空间">回收空间</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diskutil eraseVolume FREE L disk0s3000 <span class="c"># 将空间转化为未分配空间</span>
-diskutil apfs resizeContainer disk1 0  <span class="c"># 扩展container disk1的空间</span>
-</code></pre></div></div>
-
-<h2 id="apfs-container的uuid变成f问题">apfs container的UUID变成F问题</h2>
-
-<p>diskutil list disk0 显示磁盘的TYPE和NAME 是一行FFFFFFF-FFFFF。。。。</p>
-
-<p>主要是因为上面回收空间时产生的，解决办法：</p>
-
-<ol>
-  <li>sudo gpt -r show /dev/disk0 记录下该分区的扇区开始数和个数
-    <ol>
-      <li>运行结果conten列就是UUID，FFFFFFF。。。为对应的故障分区</li>
-      <li>该行start列为分区开始扇区数</li>
-      <li>该行size列为分区扇区个数</li>
-    </ol>
-  </li>
-  <li>恢复模式/Time Machine/U盘安装盘重启，进入命令行
-    <ol>
-      <li>gpt -r show /dev/disk0 记录下apfs container的扇区起止数，比如409640 195312496</li>
-      <li>diskutil umountDisk disk0  # 卸载故障磁盘</li>
-      <li>gpt remove -i 2 disk0      # 去除故障分区，2表示disk0(gpt型)第2个分区</li>
-      <li>diskutil umountDisk disk0  # 确保卸载</li>
-      <li>gpt add -i 2 -b begin -s size -t 7C3457EF-0000-11AA-AA11-00306543ECAC disk0
-        <ol>
-          <li>i后面的2 表示故障分区是disk0的第二个分区</li>
-          <li>begin和size后面的数字是之前记录的 故障分区扇区开始数和个数</li>
-          <li>7C3457EF-0000-11AA-AA11-00306543ECAC 是APFS的UUID，是固定的</li>
-        </ol>
-      </li>
-    </ol>
-  </li>
-  <li>查看修改结果</li>
-</ol>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diskutil list disk0
-diskutil verifyDisk disk0       
-diskutil verifyVolume disk0s2
-</code></pre></div></div>
-
-<h1 id="安装windows">安装windows</h1>
-
-<ol>
-  <li>使用bootcamp
-    <ol>
-      <li>在操作栏选择下载windows软件</li>
-      <li>安装PE</li>
-    </ol>
-  </li>
-  <li>用PE启动，安装 windows10 选好 EFI和安装分区</li>
-</ol>
-
-<p>这种安装方法，不会更改磁盘类型到MBR混合模式，还是以前的保护模式</p>
-
-<h1 id="安装ubuntu">安装Ubuntu</h1>
-
-<ol>
-  <li>先确保安装好了 mac + windows 双系统</li>
-  <li>安装refind</li>
-  <li>安装ubuntu，
-    <ol>
-      <li>使用Etcher或unetbootin来制作USB安装盘，自己搞老是遇到文件系统。。。</li>
-      <li>选择对应分区挂载点/ 不需格式化，</li>
-      <li>device for boot loader installation的选项改为该分区</li>
-    </ol>
-  </li>
-  <li>完成后回到Mac ，把EFI下的refind文件夹重命名为boot？？？</li>
-</ol>
-
-<h1 id="其他">其他</h1>
-
-<p>Ubuntu下 sudo efibootmgr显示启动列表</p>
-
-<h2 id="删除refind">删除refind</h2>
-<p>在macOS中 进入EFI分区删除refind文件夹，sudo bless –setBoot –mount /</p>
  
-        
+        <a href="/posts/%E4%B8%89%E7%B3%BB%E7%BB%9F" rel="nofollow">阅读全文...</a>
         </div>
         <br/>
         <div>
-          <cite>2018-06-24</cite> <i class="icon-tag"></i>  
+          <cite>2018-06-14</cite> <i class="icon-tag"></i>  <a href="tags#GPT-ref">GPT</a>, <a href="tags#Linux-ref">Linux</a>
        </div> 
         <div style="clear: both;"></div>
         <hr/>
