@@ -72,6 +72,9 @@
             <li class="toc_level-1 toc_section-1">
               <a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">findutils-default</span></a>
             </li>
+            <li class="toc_level-1 toc_section-2">
+              <a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">awk</span></a>
+            </li>
           </ul>
         </td>
       </tr>
@@ -81,10 +84,90 @@
 
 <p>主要翻译自 [GNU-findutils-manual(https://www.gnu.org/software/findutils/manual/html_node/find_html/Regular-Expressions.html#Regular-Expressions)</p>
 
+<p>这个什么手册啊 ？和*怎么就混淆了呢</p>
+
 <!-- more -->
 
 <h1 id="tocAnchor-1-1">findutils-default</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>模式</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>.</td>
+      <td>匹配任何单个字符</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>重复1次或更多次</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td>重复0次或更多次</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>其他特点</p>
+
+<ul>
+  <li>支持 GNU extensions</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>()要使用\( \)，或关系的</td>
+          <td>要使用|</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>不支持重复次数 {}</li>
+</ul>
+
+<h1 id="tocAnchor-1-2">awk</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>模式</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>.</td>
+      <td>匹配任何单个字符</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>重复1或更多次</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td>重复0或更多次</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>不支持 GNU extensions</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>() 和</td>
+          <td>不用加\</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
 
     </div>
 

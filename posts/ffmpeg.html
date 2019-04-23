@@ -244,10 +244,10 @@ ffmpeg -i DeadPoetsSocietyCD1.avi -ss 00:00:00.000 -to 00:02:00.000 -b:a output.
 
 <h2 id="tocAnchor-1-12-3">声音参数</h2>
 <ul>
-  <li>-b:a——设置每Channel（最近的SVN版为所有Channel的总合）的流量。（单位请引用下方注意事项）</li>
+  <li>-b:a——设置音频的码率，64k就表示码率为64kb/s</li>
   <li>-ar——设置采样率。</li>
   <li>-ac——设置声音的Channel数。</li>
-  <li>-acodec ( -c:a ) ——设置声音编解码器，未设置时与视频相同，使用与输入文件相同之编解码器。</li>
+  <li>-acodec ( -c:a ) ——设置声音编解码器</li>
   <li>-an——不处理声音，于仅针对视频做处理时使用。</li>
   <li>-vol——设置音量大小，256为标准音量。（要设置成两倍音量时则输入512，依此类推。）</li>
 </ul>
